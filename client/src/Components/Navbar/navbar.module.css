@@ -1,0 +1,12 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding: 25px;
+    background-color: #c4352b;
+    color: white
+}
+.header a{
+    color: white;
+}

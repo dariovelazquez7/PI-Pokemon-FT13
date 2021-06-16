@@ -1,0 +1,45 @@
+.form{
+    width: 350px;
+    background: rgb(233, 233, 233);
+    border: 1px solid #256fca;
+    padding: 22px;
+    margin: auto;
+    margin-top: 45px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 4px rgba(61, 61, 61, 0.515);
+}
+
+.form input{
+    
+    margin-bottom: 10px;
+    padding: 10px;
+   border-radius: 7px;
+   
+}
+.form button{
+    margin: 10px 0;
+    padding: 7px;
+    background: #0167e2;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 199px;
+    height: 40px;
+    
+}
+.form button:hover{
+    background: #0073ff;
+    cursor: pointer;
+}
+.span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.span div{
+    margin: 2px 7px;
+}
+
+.inp{
+    text-decoration: none;
+}
