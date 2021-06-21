@@ -3,10 +3,12 @@ import {Route, Switch } from "react-router-dom";
 import Home from "./Components/Home/home.jsx";
 import Presentation from "./Components/Presentation/Presentation.jsx"
 import Navbar from "./Components/Navbar/navbar.jsx"
-import Details from './Components/Details/Details.jsx';
+import SearchPokemon from './Components/SearchPokemon/SearchPokemon.jsx';
 import Error from "./Components/Error/Error.jsx"
 import Form from "./Components/Form/Form.jsx";
 import PokemonCreated from './Components/PokemonCreated/PokemonCreated';
+import Details from './Components/Details/Details';
+import Types from './Components/Types/Types';
 
 
 function App() {
@@ -17,9 +19,12 @@ function App() {
     <Switch>
       <Route exact path="/" component={Presentation}/>
       <Route exact path="/home" component={Home}/>
-      <Route exact path="/home/pokemon" component={Details}/>
+      <Route exact path="/home/pokemon" component={SearchPokemon}/>
       <Route exact path="/form" component={Form}/>
       <Route exact path="/form/pokemoncreated" component={PokemonCreated}/>
+      <Route exact path="/home/pokemon/:id" component={Details}/>
+      <Route exact path="/tipos" component={Types}/>
+
 
       <Route path = "*" component={Error}/>
 

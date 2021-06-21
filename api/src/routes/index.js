@@ -20,7 +20,17 @@ router.get("/pokemons/", async (req,res,next)=>{
   
    if(req.originalUrl === "/pokemons"){
     try{
-      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=40`)
+      const pokemonsFinded = await Pokemon.findAll({include:[Tipo]})
+      let pokemonsDB = pokemonsFinded.map( e => {
+         const types = e.dataValues.tipos.map(e => e.name)
+         return {
+            ...e.dataValues,
+            tipos: types
+         }
+      })
+
+      let offset= Math.floor(Math.random() * 212)
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=40`) 
       const pokemonUrl = response.data.results.map(e => e.url)
       const PromiseUrl = await Promise.all(pokemonUrl.map(e => axios.get(e)))
 
@@ -33,11 +43,11 @@ router.get("/pokemons/", async (req,res,next)=>{
            
          }
       })
-      return res.json(pokemon)
-      
+  
+      return res.json([...pokemon, ...pokemonsDB])
     }
     catch(error){
-      return res.status(404).send("Algo falló")
+      return res.status(404).send(error)
     }
    }
     else next()
@@ -52,24 +62,32 @@ router.get("/pokemons/:id", async (req, res)=>{
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
       
       const pokemon = {
-         name: response.data.name,
-         image: response.data.sprites.other['official-artwork'].front_default,
-         type: response.data.types.map(e => e.type.name).join(", "),
+         nombre: response.data.name,
+         imagen: response.data.sprites.other['official-artwork'].front_default,
+         tipos: response.data.types.map(e => e.type.name),
          id: response.data.id,
          hp: response.data.stats[0].base_stat,
-         attack: response.data.stats[1].base_stat,
-         defense: response.data.stats[2].base_stat,
-         speed: response.data.stats[5].base_stat,
-         height:response.data.height,
-         weight: response.data.weight
+         ataque: response.data.stats[1].base_stat,
+         defensa: response.data.stats[2].base_stat,
+         velocidad: response.data.stats[5].base_stat,
+         altura:response.data.height,
+         peso: response.data.weight
       }
       return res.json(pokemon)
    }
    catch(error){
       if(error){
-      Pokemon.findByPk(id)
+      Pokemon.findOne({
+         where: {
+            id: id
+         },
+         include:[Tipo]
+      })
       .then(pokemon=> {
-         if(pokemon) return res.json(pokemon)
+         
+         if(pokemon){
+            var obj = {...pokemon.dataValues,tipos: pokemon.tipos.map(e => e.name)}
+            return res.json(obj)}
          else return res.status(404).send("El id no corresponde a un pokemon valido.")
       })
       .catch(() =>{
@@ -77,7 +95,7 @@ router.get("/pokemons/:id", async (req, res)=>{
       })
       }
       
-   } 
+   }
  });
 
 
@@ -87,16 +105,16 @@ router.get("/pokemons/:id", async (req, res)=>{
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
       
       const pokemon = {
-         name: response.data.name,
-         image: response.data.sprites.other['official-artwork'].front_default,
-         type: response.data.types.map(e => e.type.name),
+         nombre: response.data.name,
+         imagen: response.data.sprites.other['official-artwork'].front_default,
+         tipos: response.data.types.map(e => e.type.name),
          id: response.data.id,
          hp: response.data.stats[0].base_stat,
-         attack: response.data.stats[1].base_stat,
-         defense: response.data.stats[2].base_stat,
-         speed: response.data.stats[5].base_stat,
-         height:response.data.height,
-         weight: response.data.weight
+         ataque: response.data.stats[1].base_stat,
+         defensa: response.data.stats[2].base_stat,
+         velocidad: response.data.stats[5].base_stat,
+         altura:response.data.height,
+         peso: response.data.weight
       }
          return res.json(pokemon)
    
@@ -104,13 +122,15 @@ router.get("/pokemons/:id", async (req, res)=>{
    catch(error){
          Pokemon.findOne({
             where: {
-               
-               name: name
-             
-            }
+               nombre: name
+            },
+            include:[Tipo]
          })
          .then(pokemon => {
-            if(pokemon) return res.json(pokemon)
+            if(pokemon){
+               var obj = {...pokemon.dataValues,tipos: pokemon.tipos.map(e => e.name)}
+               return res.json(obj)
+            }
             else return res.status(404).send("El pokemon no existe")
          })
    }
@@ -121,19 +141,20 @@ router.get("/pokemons/:id", async (req, res)=>{
 
 router.post("/pokemons", async (req,res)=>{
    const pokemon = req.body
-   const {name} = req.body
-   // if(!name || !hp || !attack || !defense || !speed || !height || !weight)
-   // return res.status(422).json({error: "No se recibieron los parámetros necesarios para crear el Pokemon"})
+   const {nombre} = req.body
+
 
    let id = 899
    const allPokemon = await Pokemon.findAll()
    
    const pokemonCreated = await Pokemon.create({
       ...pokemon,
-      name: name.toLowerCase(),
-      id: id + allPokemon.length
+      name: nombre.toLowerCase(),
+      id: id + allPokemon.length,
+
    })
-   pokemon.type.forEach(async type => pokemonCreated.addTipo(await Tipo.findOne({  
+
+   pokemon.tipos.forEach(async type => pokemonCreated.addTipo(await Tipo.findOne({  
       where: {
          name: type,
       }
@@ -157,6 +178,7 @@ router.get("/types", async (req, res)=> {
    res.json(typesBD)
 })
 
+//get para obtener pokemons por su tipo pero solo en base de datos
 
 router.get("/types/:tipe", async (req, res)=> {
    const typodepokemones = req.params.tipe

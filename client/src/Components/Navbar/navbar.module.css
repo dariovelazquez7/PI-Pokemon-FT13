@@ -3,10 +3,43 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid black;
-    padding: 25px;
-    background-color: #c4352b;
+    padding: 10px;
+    background-color: var(--red);
     color: white
 }
 .header a{
     color: white;
+}
+
+
+.navbar{
+    margin-right: -70px;
+}
+.navbar div{
+    display: flex;
+
+}
+.navbar div li{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 15px;
+    
+   
+}
+
+
+li{
+    list-style: none;
+
+}
+
+.home{
+    margin-top:5px ;
+}
+.presentacion{
+    margin-top:5px ;
 }

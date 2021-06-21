@@ -4,18 +4,21 @@ import axios from 'axios';
 export const GET_INITIAL_POKEMONS = "GET_INITIAL_POKEMONS";
 export const GET_POKEMON = "GET_POKEMON"
 export const LOADING = "LOADING";
-export const GET_TYPE = "GET_TYPE";
+export const GET_POKEMON_DETAIL = "GET_POKEMON_DETAIL";
 export const CREATE_POKEMON = "CREATE_POKEMON";
+export const GET_TYPE = "GET_TYPE";
+
+
 
 
 export const getInitialPokemons = () => {
     return  (dispatch) =>{
-        
         axios.get("http://localhost:3001/pokemons").then(resp => {
             dispatch({type: GET_INITIAL_POKEMONS, payload: resp.data})
         })
-        .catch(() => {
-            console.log("Ups! Algo malió sal")
+        .catch((error) => {
+            if(error.response?.status !== 404) console.log("algo salio mal en 'getInitialPokemons'")
+            dispatch({type: GET_INITIAL_POKEMONS, payload: null})
         })
     }
 }
@@ -28,28 +31,34 @@ export const getPokemon = (name) => {
                 dispatch({type: GET_POKEMON, payload: response.data})
         })
         .catch(error => {
-            if(error.response?.status !== 404) alert("algo salio mal")
+            if(error.response?.status !== 404) console.log("algo salio mal en 'getPokemon'")
             dispatch({type: GET_POKEMON, payload: null})
         })
     }
 }
 
-export const createPokemon = (data) => {
+export const pokemonDetail = (id) => {
     return  (dispatch) =>{
-        
-        axios.post("http://localhost:3001/pokemons", data).then(resp => {
-            
-            dispatch({type: CREATE_POKEMON, payload: resp})
-            console.log(resp)
+        dispatch({type:LOADING})
+        axios.get(`http://localhost:3001/pokemons/${id}`)
+        .then(response => {
+                dispatch({type: GET_POKEMON_DETAIL, payload: response.data})
         })
-        .catch(() => {
-            console.log("Ups! Algo malió sal")
+        .catch(error => {
+            if(error.response?.status !== 404) console.log("algo salio mal en 'pokemonDetail'")
+            dispatch({type: GET_POKEMON_DETAIL, payload: null})
         })
     }
 }
-export const actionLoading = () => {
-    return(dispatch) => {
-        dispatch({type:LOADING})
 
+
+export const createPokemon = (data) => {
+    return  (dispatch) =>{
+            axios.post("http://localhost:3001/pokemons", data).then(resp => {        
+            dispatch({type: CREATE_POKEMON, payload: resp.data})
+        })
+        .catch(() => {
+            console.log("Ups! Algo malió sal en 'createPokemon'")
+        })
     }
 }

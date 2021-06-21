@@ -1,55 +1,50 @@
-import React, { useState } from "react";
-
-import { useDispatch} from "react-redux"
-
+import React from "react";
+import pokemon from "../../Img/pokemon.png";
 import style from "./navbar.module.css"
-import {BsSearch} from "react-icons/bs"
-import {Link, useHistory} from "react-router-dom"
-import {getPokemon} from "../../Actions/actions"
-
+import {Link} from "react-router-dom"
+import SearchBar from "../SearchBar/SearchBar";
+import {CgPokemon, CgHome, CgToday} from "react-icons/cg"
 
 
 
 function Navbar() {
-const dispatch = useDispatch()
-const [state, setState] = useState({name: ""})
-
-    
-const handleChange = (e) => {
-    setState({name: e.target.value });
-}
-const history = useHistory()
 
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(getPokemon(state.name.toLowerCase()))
-    history.push("/home/pokemon")
-    
-}
 
     return (  
         <header className= {style.header}>
-            <div> <Link to ={"/home"}>Home</Link> </div>
-            <div> <Link to={"/form"}>Crea tu Pokemón!</Link></div>           
-            <div> About</div>
-        <nav>
-            <form  >
-                <div className={style.form}>
-                    <input type="search" 
-                    autoComplete="off"
-                    
-                    placeholder="Busca por nombre..."
-                    onChange={handleChange}
-                    />
-                  
-                    <button className={style.btn} onClick={handleSubmit}> 
-                        {<BsSearch/>}
-                    </button>
-                   
+            <nav className= {style.navbar}>
+                <div>
+            <Link to ={"/home"}>
+                    <li className= {style.home}>
+                    <CgHome fontSize="30px"/>
+                    <span>Home</span>
+                    </li>
+
+            </Link>     
+
+
+            <Link to={"/form"}> 
+            <li>
+                    <CgPokemon fontSize="36px" />
+                    <span>Crea tu Pokemón! </span> 
+            </li>
+            </Link> 
+
+
+            <Link to={"/"}>
+            <li className= {style.presentacion}>
+                    <CgToday fontSize="31px"/>
+                    <span>Presentacion</span>
+            </li>
+            </Link>
                 </div>
-            </form>
-        </nav>
+            </nav>
+
+                <div><img src={pokemon} alt="" height="70px" width="200px"/></div>
+            <div>
+                <SearchBar/>
+            </div>
         </header>
        
     )

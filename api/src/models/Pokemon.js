@@ -8,7 +8,7 @@ const { DataTypes } = require('sequelize');
 module.exports =  (sequelize) => {
   // defino el modelo
    sequelize.define('pokemon', {
-    name: {
+    nombre: {
       type: DataTypes.STRING,
         allowNull: false,
     },
@@ -21,26 +21,24 @@ module.exports =  (sequelize) => {
     hp: {
       type: DataTypes.INTEGER,
     },
-    attack:{
+    ataque:{
       type: DataTypes.INTEGER,
     },
-    defense:{
+    defensa:{
       type: DataTypes.INTEGER,
     },
-    speed:{
+    velocidad:{
       type: DataTypes.INTEGER,
     },
-    height:{
+    altura:{
       type: DataTypes.DOUBLE,
 
     },
-    weight:{
+    peso:{
       type: DataTypes.DOUBLE,
     },
    
   });
 };
 
-// Page.beforeValidate((page)=>{
-//   page.urlTitle = page.title && page.title.replace(/\s+/g, '_').replace(/\W/g, '')
-// })
+

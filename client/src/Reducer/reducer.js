@@ -1,10 +1,12 @@
-import {GET_INITIAL_POKEMONS, GET_POKEMON, LOADING, CREATE_POKEMON} from "../Actions/actions"
+import {GET_INITIAL_POKEMONS, GET_POKEMON, LOADING, CREATE_POKEMON, GET_POKEMON_DETAIL} from "../Actions/actions"
 
 const initialState = {
     initialPokemons: [],
     pokemon: undefined,
     loading: false,
-    pokemonCreated: {}
+    details: undefined,
+    pokemonCreated: {},
+
 }
 
 function rootReducer (state = initialState, action) {
@@ -20,6 +22,12 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 loading: false,
                 pokemon: action.payload
+            }
+        case GET_POKEMON_DETAIL:
+            return {
+                ...state,
+                loading: false,
+                details: action.payload
             }
         
         case LOADING:

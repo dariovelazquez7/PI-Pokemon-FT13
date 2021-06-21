@@ -5,9 +5,91 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: cornsilk; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:root{
+  --red: #d0352a;
+  --blue: #0167e2;
+  --shadow: rgba(0, 0, 0, 0.179);
+  --bug: #009763;
+  --dragon: #A7C5EB;
+  --electric:#FFC107;
+  --fairy: #FFAEC0;
+  --fighting:#F76135;
+  --fire: #df191c;
+  --flying: #28527A;
+  --ghost: #7363dc;
+  --grass: #24D64E;
+  --ground: #CDAC81;
+  --ice: #84DEFF;
+  --normal: #ffffff;
+  --poison: #93329E;
+  --psychic: #d85c75;
+  --rock: #58391C;
+  --steel: #6b6b6b;
+  --water: #2653B5;
+  --dark: #000000;
+  --unknown: #b3aee1;
+  
+  
+  
+
+}
+a{
+  text-decoration: none;
+  
+}
+
+select {
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  -ms-appearance:none;
+  appearance:none;
+  outline:0;
+  box-shadow:none;
+  border:0!important;
+  background: #454847;
+  background-image: none;
+  flex: 1;
+  padding: 0 .5em;
+  color:#fff;
+  cursor:pointer;
+  font-size: 1em;
+  font-family: 'Open Sans', sans-serif;
+}
+select::-ms-expand {
+  display: none;
+}
+
+.select {
+  position: relative;
+  display: flex;
+  
+  width: 255px;
+  height: 44px;
+  line-height: 3;
+  background: #5c6664;
+  overflow: hidden;
+  border-radius: .25em;
+}
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #313131;
+  cursor:pointer;
+  pointer-events:none;
+  transition:.25s all ease;
+  color: white
+}
+.select:hover::after {
+  color: var(--blue)
 }
