@@ -13,6 +13,7 @@ export const GET_TYPE = "GET_TYPE";
 
 export const getInitialPokemons = () => {
     return  (dispatch) =>{
+        dispatch({type:LOADING})
         axios.get("http://localhost:3001/pokemons").then(resp => {
             dispatch({type: GET_INITIAL_POKEMONS, payload: resp.data})
         })

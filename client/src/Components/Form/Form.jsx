@@ -14,6 +14,9 @@ function Form() {
 
     const dispatch = useDispatch()
 
+
+    
+
     const [form, setForm] = useState({
         nombre: "",
         hp: "",
@@ -22,22 +25,32 @@ function Form() {
         velocidad: "",
         altura: "",
         peso: "",
-        tipos: []
-       
-
+        tipos: [],
+     
     })
+
+    const [error, setError] = useState("")
+
+
 
     const Allchecked =() => {
         const checks = document.querySelectorAll(".check")
         checks.forEach(e => {
-            if(e.checked === true){
-                arr.push(e.id)
-           
+            let aux = []
+            aux.push(e.checked)
+            if(e.checked === true ){
+                    arr.push(e.id)
+                    if(arr.length === 3){
+                        e.checked = false
+                    }
              }
        });
     }
    
    const handleChange = (e) => {
+        if(!/(?=.*[0-9])/.test(e.target.value)){
+            setError("El campo debe ser un numero")
+        } else
        setForm({
         ...form,
         [e.target.name]: e.target.value,
@@ -81,25 +94,25 @@ return (
             <h2>Crea tu propio pokemon!</h2>
             <div>
             
-                <input name="nombre"  type="text" placeholder="Nombre..." autoComplete="off" onChange={handleChange}/>
+                <input name="nombre" maxlength="10" type="text" placeholder="Nombre..." autoComplete="off" onChange={handleChange}/>
             </div>
             <div>  
-                <input name="hp"  type="number" placeholder="Hp..." onChange={handleChange}/>
+                <input name="hp"  maxlength="3"  max="250" type="text" placeholder="Hp..." onChange={handleChange}/>
             </div>
             <div>
-                <input name="ataque"  type="number" placeholder="Ataque..."onChange={handleChange}/>
+                <input name="ataque"  maxlength="3" max="250" type="text" placeholder="Ataque..."onChange={handleChange}/>
             </div>
             <div>
-            <input name="defensa"  type="number" placeholder="Defensa..."onChange={handleChange}/>
+            <input name="defensa"  maxlength="3" max="250" type="text" placeholder="Defensa..."onChange={handleChange}/>
             </div>
             <div>
-                <input name="velocidad"  type="number" placeholder="Velocidad..."onChange={handleChange}/>
+                <input name="velocidad" maxlength="3" max="500" type="text" placeholder="Velocidad..."onChange={handleChange}/>
             </div>
             <div>
-                <input name="altura"  type="number" placeholder="Altura..."onChange={handleChange}/>
+                <input name="altura" maxlength="3" max="15" type="text" placeholder="Altura..."onChange={handleChange}/>
             </div>
             <div>
-                <input name="peso"  type="number" placeholder="Peso..."onChange={handleChange}/>
+                <input name="peso" maxlength="3" max="300" type="text" placeholder="Peso..."onChange={handleChange}/>
             </div>
             <hr />
             <p>Types</p>

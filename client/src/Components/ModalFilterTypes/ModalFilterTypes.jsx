@@ -27,10 +27,10 @@ const handleChange = (e) => {
     setState({...state,checks:arr })
     CheckboxTypes() 
 }
-var xd = ""
+
 function handleSubmit(){
     var checktype = state.checks[0]
-    xd = initialPokemons.filter(pokemon => pokemon.tipos.includes(checktype))
+    initialPokemons.filter(pokemon => pokemon.tipos.includes(checktype))
    
 }
 

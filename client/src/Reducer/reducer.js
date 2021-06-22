@@ -15,6 +15,7 @@ function rootReducer (state = initialState, action) {
         case GET_INITIAL_POKEMONS:
             return {
                 ...state,
+                loading: false,
                 initialPokemons: action.payload
             }
         

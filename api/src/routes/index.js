@@ -60,7 +60,11 @@ router.get("/pokemons/:id", async (req, res)=>{
    const {id} = req.params  
    try{
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-      
+      let altura = response.data.height.toString().split("")
+      let peso = response.data.weight.toString().split("")
+      altura.splice(-1,0,",")
+      peso.splice(-1,0,",")
+
       const pokemon = {
          nombre: response.data.name,
          imagen: response.data.sprites.other['official-artwork'].front_default,
@@ -70,9 +74,11 @@ router.get("/pokemons/:id", async (req, res)=>{
          ataque: response.data.stats[1].base_stat,
          defensa: response.data.stats[2].base_stat,
          velocidad: response.data.stats[5].base_stat,
-         altura:response.data.height,
-         peso: response.data.weight
+         altura: altura.join(""),
+         peso: peso.join("")
       }
+      console.log(pokemon.altura)
+      console.log(pokemon.peso)
       return res.json(pokemon)
    }
    catch(error){
@@ -86,7 +92,7 @@ router.get("/pokemons/:id", async (req, res)=>{
       .then(pokemon=> {
          
          if(pokemon){
-            var obj = {...pokemon.dataValues,tipos: pokemon.tipos.map(e => e.name)}
+            let obj = {...pokemon.dataValues,tipos: pokemon.tipos.map(e => e.name)}
             return res.json(obj)}
          else return res.status(404).send("El id no corresponde a un pokemon valido.")
       })
@@ -104,7 +110,10 @@ router.get("/pokemons/:id", async (req, res)=>{
    const name = req.query.name.toLowerCase()
    try{
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-      
+      let altura = response.data.height.toString().split("")
+      let peso = response.data.weight.toString().split("")
+      altura.splice(-1,0,",")
+      peso.splice(-1,0,",")
       const pokemon = {
          nombre: response.data.name,
          imagen: response.data.sprites.other['official-artwork'].front_default,
@@ -114,8 +123,8 @@ router.get("/pokemons/:id", async (req, res)=>{
          ataque: response.data.stats[1].base_stat,
          defensa: response.data.stats[2].base_stat,
          velocidad: response.data.stats[5].base_stat,
-         altura:response.data.height,
-         peso: response.data.weight
+         altura: altura.join(""),
+         peso: peso.join("")
       }
          return res.json(pokemon)
    
@@ -129,7 +138,7 @@ router.get("/pokemons/:id", async (req, res)=>{
          })
          .then(pokemon => {
             if(pokemon){
-               var obj = {...pokemon.dataValues,tipos: pokemon.tipos.map(e => e.name)}
+               let obj = {...pokemon.dataValues,tipos: pokemon.tipos.map(e => e.name)}
                return res.json(obj)
             }
             else return res.status(404).send("El pokemon no existe")
@@ -152,7 +161,7 @@ router.post("/pokemons", async (req,res)=>{
    const pokemonCreated = await Pokemon.create({
       ...pokemon,
       name: nombre.toLowerCase(),
-      id: id + allPokemon.length,
+      id: parseInt( id + allPokemon.length),
 
    })
 
@@ -162,7 +171,6 @@ router.post("/pokemons", async (req,res)=>{
       }
    })))
 
-   // res.json({...pokemonCreated.dataValues, type : pokemon.type})
    res.json(pokemonCreated)
 })
 
@@ -171,13 +179,6 @@ router.post("/pokemons", async (req,res)=>{
 
 
 router.get("/types", async (req, res)=> {
-// const response = await axios.get("https://pokeapi.co/api/v2/type")
-//   const promesas = await Promise.all(response.data.results.map(e => {
-//    return Tipo.findOrCreate({
-//       where: {name: e.name}  
-//    })  
-// }))
-//    return res.json(promesas)
    const typesBD = await Tipo.findAll({include : Pokemon })
    res.json(typesBD)
 })

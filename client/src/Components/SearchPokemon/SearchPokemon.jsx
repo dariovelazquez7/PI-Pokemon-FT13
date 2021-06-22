@@ -69,6 +69,9 @@ return (
             <div>
                 {pokemonSearch.tipos?.map((tipo,i) => 
                 <div key={i} className={tipo === "dark"?style.dark:style.types}>{tipo}</div>)}
+                <div>HP: {pokemonSearch.hp}</div>
+                <div> { pokemonSearch.altura[0]=== ","? "0" + pokemonSearch.altura: pokemonSearch.altura} m. </div>
+                 <div>{pokemonSearch.peso} Kg.</div>
             </div>
 
             

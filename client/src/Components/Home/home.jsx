@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import imgLoading from "../../Img/loading.gif";
 
 import style from "./home.module.css";
-import { useSelector} from "react-redux";
+import { useSelector , useDispatch} from "react-redux";
 
-// import {getInitialPokemons} from "../../Actions/actions";
+import {getInitialPokemons} from "../../Actions/actions";
 import egg from "../../Img/egg.png";
 import {TiMediaRewind, TiMediaFastForward} from "react-icons/ti";
 import {Link} from "react-router-dom";
@@ -14,10 +14,12 @@ import {Link} from "react-router-dom";
 
 function Home() {
 let allPokemons= useSelector(state => state.initialPokemons)
+const loading = useSelector(state => state.loading)
+const dispatch = useDispatch()
 
 
 let arrayCheckbox = []
-let allPokemonsLocal= undefined
+// let allPokemonsLocal= undefined
 
 
   const [state, setState] = useState({
@@ -26,11 +28,13 @@ let allPokemonsLocal= undefined
     select: "Numeracion",
     check: [],
     filtroPorTipo: undefined,
-    filtro: false
+    filtrado:  undefined,
+    fil: undefined,
+    aux: undefined
   })
 
   useEffect(() => {
-    setState({ prev: 0, next: 12, filtro: false})
+    setState({ prev: 0, next: 12})
     
   }, [])
 
@@ -79,17 +83,32 @@ if(state.filtroPorTipo?.length > 0){
   allPokemons =  state.filtroPorTipo
 }
 console.log("all", allPokemons)
-let baseDatos = []
+
+
 function filtradoBaseDatos() {
-  setState({...state, filtro: !state.filtro})
-   baseDatos = allPokemons.filter(pokemon => pokemon.id > 898)
+   let baseDatos = allPokemons.filter(pokemon => pokemon.id > 898)
+  setState({...state, filtrado: baseDatos, aux: false})
   }
-  // if(state.filtro === true){
-  //   allPokemons= baseDatos
-  // }
-  console.log("why",baseDatos)
+
+function filtradoOriginales () {
+  let originales = allPokemons.filter(pokemon => pokemon.id < 898)
+  setState({...state, fil: originales, aux: true })
+}
+
+  if(state.filtrado?.length > 0 && state.aux === false){
+    allPokemons= state.filtrado
+  }
+  if(state.fil?.length > 0 && state.aux === true){
+    allPokemons= state.fil
+  }
 let initialPokemons = allPokemons?.slice(state.prev,state.next)
 
+  
+  
+  console.log(loading)
+
+
+  
 
 
 
@@ -326,21 +345,22 @@ let initialPokemons = allPokemons?.slice(state.prev,state.next)
             </div>
             </div>
             <div className={style.refresh}>
-              <span>boton refresh</span>
+              <span>  <button onClick={()=> dispatch(getInitialPokemons())}>Refresh</button></span>
             </div>
           </div>
            
             <div>
               <button onClick={filtradoBaseDatos}>Mostrar solo pokemons creados</button>
-              <button>Mostrar solo pokemons existentes</button>
+              <button onClick={filtradoOriginales}>Mostrar solo pokemons existentes</button>
             </div>
 
             <div className={style.container}>
-                {!initialPokemons?.length  && 
+            {/* !initialPokemons?.length  && */}
+                { loading &&
                 <img src={imgLoading} alt="" height="60px" width="60px"/> }
-{console.log(initialPokemons)}
+              {console.log(loading)}
                
-                {initialPokemons.length > 0  && initialPokemons.map(pokemon => 
+                { !loading && initialPokemons.length > 0  && initialPokemons.map(pokemon => 
                 <div className={style.card} key={pokemon.id}>
                   #{pokemon.id} {pokemon.nombre[0].toUpperCase() + pokemon.nombre.slice(1)} 
                   {pokemon.imagen? <div><Link to={`/home/pokemon/${pokemon.id}`}> <img src={pokemon.imagen} alt="" height="120px" width="120px"/></Link></div>

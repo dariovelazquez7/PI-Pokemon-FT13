@@ -12,8 +12,6 @@ function Presentation() {
         <div>
             <div>
             <h1>Inserte presentacion</h1> 
-           
-              
                 <Link to={"/home"}> 
                 <button onClick={()=> dispatch(getInitialPokemons())}> Start</button>
                 </Link>
