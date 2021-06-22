@@ -6,6 +6,7 @@ const initialState = {
     loading: false,
     details: undefined,
     pokemonCreated: {},
+    checks: []
 
 }
 

@@ -23,7 +23,7 @@ const { Pokemon,Tipo } = require('./src/db.js');
 const axios = require("axios")
 
 // Syncing all the models at once. 
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
@@ -36,10 +36,11 @@ conn.sync({ force: false }).then(() => {
   axios.get("https://pokeapi.co/api/v2/type")
   .then(r => {
     r.data.results.map(e => {
-      return Tipo.create({
-      name: e.name
+      return Tipo.findOrCreate({
+        where:{
+          name: e.name 
+        }
     })
-
     })
   })
 });

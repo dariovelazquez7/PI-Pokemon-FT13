@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useState} from "react";
 import pokemon from "../../Img/pokemon.png";
 import style from "./navbar.module.css"
 import {Link} from "react-router-dom"
-import SearchBar from "../SearchBar/SearchBar";
+import {BsSearch} from "react-icons/bs"
+import { useHistory} from "react-router-dom"
 import {CgPokemon, CgHome, CgToday} from "react-icons/cg"
+import {getPokemon} from "../../Actions/actions"
+import { useDispatch } from "react-redux"
 
 
 
 function Navbar() {
 
-
+    const [localState, setLocalState] = useState("")
+    const dispatch = useDispatch()
+    const history = useHistory()
+    
+        
+    const handleChange = (e) => {
+        setLocalState(e.target.value);
+    }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(getPokemon(localState.toLowerCase()))
+        history.push(`/home/pokemon`) 
+    }
 
     return (  
         <header className= {style.header}>
@@ -41,9 +57,21 @@ function Navbar() {
                 </div>
             </nav>
 
-                <div><img src={pokemon} alt="" height="70px" width="200px"/></div>
+                <div><img src={pokemon} alt="" height="70px" width="200px" /></div>
             <div>
-                <SearchBar/>
+            <form  >
+            <div >
+                <input type="search"
+                autoComplete="off"
+                placeholder="Busca por nombre..."
+                onChange={handleChange}
+                />
+                <button onClick={handleSubmit}> 
+                    {<BsSearch/>}
+                </button>
+            
+            </div>
+        </form>
             </div>
         </header>
        

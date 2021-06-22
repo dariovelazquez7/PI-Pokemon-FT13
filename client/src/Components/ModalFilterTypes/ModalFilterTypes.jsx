@@ -1,31 +1,49 @@
 import React,{useState} from 'react'
-import "./Types.css"
+// import Types from "../Types/Types.jsx"
+import style from "./ModalFilterTypes.module.css"
+import "./ModalFilterTypes.module.css"
+import { useSelector} from "react-redux";
+
+function ModalFilterTypes() {
 
 
-function Types() {
+const initialPokemons = useSelector(state => state.initialPokemons)
 
-    let arr = []
-    
-    const [state, setState] = useState([])
+let arr = []
 
-    const Allchecked =() => {
-        let checks = document.querySelectorAll(".check")
-        checks.forEach(e => {
-            if(e.checked === true){
-                arr.push(e.id)
-           
-             }
-       });
-    }
+const [state, setState] = useState({checks: []})
+
+const CheckboxTypes =() => {
+    let checks = document.querySelectorAll(".check")
+  
+    checks.forEach(e => {
+        if(e.checked === true){
+            arr.push(e.id)
+        
+            }
+    });
+}
+const handleChange = (e) => {
+    setState({...state,checks:arr })
+    CheckboxTypes() 
+}
+var xd = ""
+function handleSubmit(){
+    var checktype = state.checks[0]
+    xd = initialPokemons.filter(pokemon => pokemon.tipos.includes(checktype))
    
-   const handleChange = (e) => {
-        Allchecked() 
-        state && setState(arr)   
-   }
+}
 
-    return (
-        <div>
-            <div className="types">
+return (
+    <div>
+        <input type="checkbox" id="btn-modal" className={style.btn_modal}/>
+        <label htmlFor="btn-modal"className={style.lbl_modal}>Filtra por tipo...</label>
+        <div className={style.modal}> 
+            <div className={style.contenedor}>
+                <header>Filtra por tipo</header>
+                <label htmlFor="btn-modal" className={style.lbl_close_modal}>X</label>
+                <div className={style.contenido}> 
+                <div className="types">
         <div>
                 <label htmlFor="normal">
                     <input id="normal" type="checkbox" className="check" onChange={handleChange}/>
@@ -39,8 +57,8 @@ function Types() {
                 </label>
             </div>
             <div>
-                <label htmlFor="flying ">
-                    <input id="flying " type="checkbox" className="check" onChange={handleChange}/>
+                <label htmlFor="flying">
+                    <input id="flying" type="checkbox" className="check" onChange={handleChange}/>
                     <span>Flying</span>
                  </label>
             </div>
@@ -57,8 +75,8 @@ function Types() {
                 </label>
             </div>
             <div>
-                <label htmlFor="rock ">
-                    <input id="rock " type="checkbox" className="check" onChange={handleChange}/>
+                <label htmlFor="rock">
+                    <input id="rock" type="checkbox" className="check" onChange={handleChange}/>
                     <span>Rock</span>
                 </label>
             </div>
@@ -118,14 +136,14 @@ function Types() {
                 </label>
             </div>
             <div>
-                <label htmlFor="dragon ">
-                <input id="dragon " type="checkbox" className="check" onChange={handleChange}/>
+                <label htmlFor="dragon">
+                <input id="dragon" type="checkbox" className="check" onChange={handleChange}/>
                     <span>Dragon</span>
                      </label>
             </div>
             <div>
-                <label htmlFor="dark ">
-                    <input id="dark " type="checkbox" className="check" onChange={handleChange}/>
+                <label htmlFor="dark">
+                    <input id="dark" type="checkbox" className="check" onChange={handleChange}/>
                     <span>Dark</span>
                 </label>
             </div>
@@ -148,9 +166,14 @@ function Types() {
                 </label>
             </div>
         </div>
-        <br />
+                </div>
+                
+            
+                <button onClick={handleSubmit}>Filtrar</button>
+            </div>
         </div>
-    )
+    </div>
+)
 }
 
-export default Types
+export default ModalFilterTypes

@@ -8,8 +8,8 @@ import Error from "./Components/Error/Error.jsx"
 import Form from "./Components/Form/Form.jsx";
 import PokemonCreated from './Components/PokemonCreated/PokemonCreated';
 import Details from './Components/Details/Details';
-import Types from './Components/Types/Types';
-
+import ModalFilterTypes from "./Components/ModalFilterTypes/ModalFilterTypes.jsx";
+// import Types from './Components/Types/Types';
 
 function App() {
   return (
@@ -23,11 +23,9 @@ function App() {
       <Route exact path="/form" component={Form}/>
       <Route exact path="/form/pokemoncreated" component={PokemonCreated}/>
       <Route exact path="/home/pokemon/:id" component={Details}/>
-      <Route exact path="/tipos" component={Types}/>
-
+      <Route exact path="/tipos" component={ModalFilterTypes}/>
 
       <Route path = "*" component={Error}/>
-
     </Switch>
 
       

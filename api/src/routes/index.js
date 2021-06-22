@@ -39,8 +39,8 @@ router.get("/pokemons/", async (req,res,next)=>{
          return {nombre: e.data.name,
             imagen:e.data.sprites.other['official-artwork'].front_default,
             tipos: tipos,
-            id: e.data.id
-           
+            id: e.data.id,
+            ataque: e.data.stats[1].base_stat,
          }
       })
   
@@ -99,6 +99,7 @@ router.get("/pokemons/:id", async (req, res)=>{
  });
 
 
+
  router.get("/pokemons", async (req,res)=>{
    const name = req.query.name.toLowerCase()
    try{
@@ -139,6 +140,7 @@ router.get("/pokemons/:id", async (req, res)=>{
 
 
 
+
 router.post("/pokemons", async (req,res)=>{
    const pokemon = req.body
    const {nombre} = req.body
@@ -165,6 +167,9 @@ router.post("/pokemons", async (req,res)=>{
 })
 
 
+
+
+
 router.get("/types", async (req, res)=> {
 // const response = await axios.get("https://pokeapi.co/api/v2/type")
 //   const promesas = await Promise.all(response.data.results.map(e => {
@@ -173,20 +178,17 @@ router.get("/types", async (req, res)=> {
 //    })  
 // }))
 //    return res.json(promesas)
-
-   const typesBD = await Tipo.findAll({includes : Pokemon })
+   const typesBD = await Tipo.findAll({include : Pokemon })
    res.json(typesBD)
 })
 
 //get para obtener pokemons por su tipo pero solo en base de datos
 
-router.get("/types/:tipe", async (req, res)=> {
-   const typodepokemones = req.params.tipe
+router.get("/types/:type", async (req, res)=> {
+   const typodepokemones = req.params.type
       const typesBD = await Tipo.findOne({where: { name :typodepokemones }, include:[Pokemon]})
       res.json(typesBD)
    })
-  
-
 
 module.exports = router;
 
