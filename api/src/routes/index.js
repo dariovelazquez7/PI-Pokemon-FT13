@@ -77,8 +77,6 @@ router.get("/pokemons/:id", async (req, res)=>{
          altura: altura.join(""),
          peso: peso.join("")
       }
-      console.log(pokemon.altura)
-      console.log(pokemon.peso)
       return res.json(pokemon)
    }
    catch(error){
@@ -154,24 +152,28 @@ router.post("/pokemons", async (req,res)=>{
    const pokemon = req.body
    const {nombre} = req.body
 
+   try{
 
+   
    let id = 899
    const allPokemon = await Pokemon.findAll()
-   
    const pokemonCreated = await Pokemon.create({
       ...pokemon,
-      name: nombre.toLowerCase(),
+      nombre: nombre?.toLowerCase(),
       id: parseInt( id + allPokemon.length),
-
    })
-
    pokemon.tipos.forEach(async type => pokemonCreated.addTipo(await Tipo.findOne({  
       where: {
          name: type,
       }
    })))
 
-   res.json(pokemonCreated)
+
+   return res.json(pokemonCreated)
+   }
+   catch(error){
+      res.send("hubo un error")
+   }
 })
 
 

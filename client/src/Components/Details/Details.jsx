@@ -17,6 +17,7 @@ let {id} = useParams()
 
 useEffect(() => {
     dispatch(pokemonDetail(id))
+   
 }, [dispatch,id])
 
 
@@ -79,8 +80,15 @@ return (
             <img src={egg} alt="" height="150px" width="150px"/>}
             
 
-            {detailPokemon.tipos?.map(tipo => 
-            <div className={tipo === "dark"?style.dark:style.types}>{tipo}</div>)}
+            {detailPokemon.tipos?.map(e => 
+            <div className={e === "bug"? style.bug : e === "fire"? style.fire: e === "shadow"? style.shadow:
+            e === "dragon"? style.dragon: e === "electric"? style.electric: e === "fairy"? style.fairy:
+            e === "fighting"? style.fighting: e === "fire"? style.fire: e === "flying"? style.flying:
+            e === "ghost"? style.ghost: e === "grass"? style.grass: e === "ground"? style.ground:
+            e === "ice"? style.ice: e === "poison"? style.poison: e === "psychic"? style.psychic: e === "rock"? style.rock:
+            e === "steel"? style.steel: e === "water"? style.water: e=== "dark"? style.dark: e ==="unknown"? style.unknown:
+            e=== "normal"? style.normal: false
+            }>{e}</div>)}
             
             <div>Ataque: {detailPokemon.ataque}</div>
             <div>Defensa: {detailPokemon.defensa}</div>
@@ -89,8 +97,6 @@ return (
             <div>Altura: {detailPokemon.altura}</div>
             <div>Peso: {detailPokemon.peso}</div>
             <div> #{detailPokemon.id} </div>
-
-   
         </div>
         }
     </div>

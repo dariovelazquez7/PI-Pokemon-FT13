@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import imgLoading from "../../Img/loading.gif";
-
+import "./home.module.css"
 import style from "./home.module.css";
 import { useSelector , useDispatch} from "react-redux";
-
+import error from "../../Img/psyduck.png"
 import {getInitialPokemons} from "../../Actions/actions";
 import egg from "../../Img/egg.png";
 import {TiMediaRewind, TiMediaFastForward} from "react-icons/ti";
@@ -36,6 +36,8 @@ let arrayCheckbox = []
   useEffect(() => {
     setState({ prev: 0, next: 12})
     
+    
+    
   }, [])
 
 
@@ -59,16 +61,16 @@ const CheckboxTypes =() => {
         arrayCheckbox.push(e.id)
         if(arrayCheckbox.length > 1){
           e.checked =false
-          console.log(arrayCheckbox)
+      
         }
         }
   });
 }
 
 function handleChange () { 
-  setState({...state,  check:arrayCheckbox })
-
+  setState({...state,  check:arrayCheckbox})
   CheckboxTypes()
+  
 }
 
 
@@ -82,7 +84,7 @@ function handleSubmit(){
 if(state.filtroPorTipo?.length > 0){
   allPokemons =  state.filtroPorTipo
 }
-console.log("all", allPokemons)
+
 
 
 function filtradoBaseDatos() {
@@ -106,6 +108,7 @@ let initialPokemons = allPokemons?.slice(state.prev,state.next)
   
   
   console.log(loading)
+  console.log(allPokemons)
 
 
   
@@ -186,7 +189,19 @@ let initialPokemons = allPokemons?.slice(state.prev,state.next)
   }
   
 
+if(!loading && allPokemons.length=== 0){
+  return (
+    <div className={style.error}>
+      <h1>Ups!</h1>
+      <h2>Parece que algo malió sal</h2>
+      <img src={error} alt="" width="200px" height="200px"/>
+      <div>
+      <button onClick={()=> dispatch(getInitialPokemons())}>Toque aqui</button>
 
+      </div>
+    </div>
+  )
+}
     return (
       <div> 
           <div className={style.header}>
@@ -358,14 +373,22 @@ let initialPokemons = allPokemons?.slice(state.prev,state.next)
             {/* !initialPokemons?.length  && */}
                 { loading &&
                 <img src={imgLoading} alt="" height="60px" width="60px"/> }
-              {console.log(loading)}
+             
                
-                { !loading && initialPokemons.length > 0  && initialPokemons.map(pokemon => 
-                <div className={style.card} key={pokemon.id}>
-                  #{pokemon.id} {pokemon.nombre[0].toUpperCase() + pokemon.nombre.slice(1)} 
-                  {pokemon.imagen? <div><Link to={`/home/pokemon/${pokemon.id}`}> <img src={pokemon.imagen} alt="" height="120px" width="120px"/></Link></div>
-                  :<div> <Link to={`/home/pokemon/${pokemon.id}`}><img src={egg} alt="" height="120px" width="120px"/></Link></div>}
-                  {pokemon.tipos.map(e => <li>{e}</li>)}
+              { !loading && initialPokemons.length > 0  && initialPokemons.map(pokemon => 
+              <div className={style.card} key={pokemon.id}>
+                #{pokemon.id} {pokemon.nombre[0].toUpperCase() + pokemon.nombre.slice(1)} 
+                {pokemon.imagen? <div><Link to={`/home/pokemon/${pokemon.id}`}> <img src={pokemon.imagen} alt="" height="120px" width="120px"/></Link></div>
+                :<div> <Link to={`/home/pokemon/${pokemon.id}`}><img src={egg} alt="" height="120px" width="120px"/></Link></div>}
+                {pokemon.tipos.map(e => 
+                <li className={e === "bug"? style.bug : e === "fire"? style.fire: e === "shadow"? style.shadow:
+                e === "dragon"? style.dragon: e === "electric"? style.electric: e === "fairy"? style.fairy:
+                e === "fighting"? style.fighting: e === "fire"? style.fire: e === "flying"? style.flying:
+                e === "ghost"? style.ghost: e === "grass"? style.grass: e === "ground"? style.ground:
+                e === "ice"? style.ice: e === "poison"? style.poison: e === "psychic"? style.psychic: e === "rock"? style.rock:
+                e === "steel"? style.steel: e === "water"? style.water: e=== "dark"? style.dark: e ==="unknown"? style.unknown:
+                e=== "normal"? style.normal: false
+              }>{e}</li>)}
                   </div>)}
             </div>
 

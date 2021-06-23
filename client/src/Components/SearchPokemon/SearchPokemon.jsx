@@ -57,25 +57,32 @@ if(pokemonSearch === undefined && !loading){
 }
 return (
     <div>
-        {loading && <img src={imgLoading} alt="" height="60px" width="60px"/>}
+    {loading && <img src={imgLoading} alt="" height="60px" width="60px"/>}
 
-        { pokemonSearch === null && !loading && <div> <img src={notFound} alt="" /></div>}
-        
-        {pokemonSearch && !loading && 
-         <div className={style.card}> 
-            <h2>#{pokemonSearch.id} - {pokemonSearch.nombre}</h2>
-            {pokemonSearch.imagen?<div> <img src={pokemonSearch.imagen} alt="" height="250px" width="250px"/></div>: 
-            <img src={egg} alt="" height="250px" width="250px"/>}
-            <div>
-                {pokemonSearch.tipos?.map((tipo,i) => 
-                <div key={i} className={tipo === "dark"?style.dark:style.types}>{tipo}</div>)}
-                <div>HP: {pokemonSearch.hp}</div>
-                <div> { pokemonSearch.altura[0]=== ","? "0" + pokemonSearch.altura: pokemonSearch.altura} m. </div>
-                 <div>{pokemonSearch.peso} Kg.</div>
-            </div>
+    { pokemonSearch === null && !loading && <div> <img src={notFound} alt="" /></div>}
+    
+    {pokemonSearch && !loading && 
+        <div className={style.card}> 
+        <h2>#{pokemonSearch.id} - {pokemonSearch.nombre}</h2>
+        {pokemonSearch.imagen?<div> <img src={pokemonSearch.imagen} alt="" height="250px" width="250px"/></div>: 
+        <img src={egg} alt="" height="250px" width="250px"/>}
+        <div>
+            {pokemonSearch.tipos?.map((e,i) => 
+            <div key={i} className={e === "bug"? style.bug : e === "fire"? style.fire: e === "shadow"? style.shadow:
+            e === "dragon"? style.dragon: e === "electric"? style.electric: e === "fairy"? style.fairy:
+            e === "fighting"? style.fighting: e === "fire"? style.fire: e === "flying"? style.flying:
+            e === "ghost"? style.ghost: e === "grass"? style.grass: e === "ground"? style.ground:
+            e === "ice"? style.ice: e === "poison"? style.poison: e === "psychic"? style.psychic: e === "rock"? style.rock:
+            e === "steel"? style.steel: e === "water"? style.water: e=== "dark"? style.dark: e ==="unknown"? style.unknown:
+            e=== "normal"? style.normal: false
+            }>{e}</div> )}
+            <div>HP: {pokemonSearch.hp}</div>
+            <div> { pokemonSearch.altura[0]=== ","? "0" + pokemonSearch.altura: pokemonSearch.altura} m. </div>
+                <div>{pokemonSearch.peso} Kg.</div>
+        </div>
 
             
-         </div>}
+        </div>}
     </div>
  )
 } 

@@ -5,47 +5,70 @@
 
     
 }
+
+.container{
+    /* background-color: rgb(36, 28, 28); */
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+   align-items: center;
+   margin: 20px 160px;
+   border-radius: 10px;
+   box-shadow:  0 0 10px 5px var(--shadow);
+   /* height: 630px;
+   width: 900px; */
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 20px 20px;
+    border: 1px solid white;
+    padding: 5px 30px;
+    min-height: 250px;
+    color: white;
+    background: black;
+}
 .refresh{
-    width: 250px;
-    height: 40px;
-    background-color: #FFCB05;
-    color: black;
+  
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.refresh button{
+    width: 250px;
+    height: 40px;
+    background: #369243;
+    color: white;
+    
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+}
+.refresh button:hover{
+    box-shadow: 0 2px 10px #369243;
 }
 
 .filtro{
     width: 250px;
     height: 40px;
 }
-.container{
-     /* background-color: rgb(242, 237, 216); */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    margin: 20px 160px;
-    border-radius: 10px;
-    box-shadow:  0 0 10px 5px var(--shadow);
-    /* height: 630px;
-    width: 900px; */
- 
-}
-.card{
-    margin: 20px 20px;
-    border: 1px solid black;
-    padding: 5px 30px;
-    min-height: 250px;
-}
+
+
+
 
 .card li{
  display: inline-block;
  margin: 0 5px;
- border: 1px solid black;
+ border: none;
  padding: 4px;
  font-size: 15px;
+ border-radius: 8px;
+ overflow: hidden;
 }
+
 
 .div_btn{
     display: flex;
@@ -56,15 +79,17 @@
 }
 .btn{
     padding: 5px;
-    background: var(--red);
+    background: var(--banner);
     margin: 5px ;
     color: white;
     border-style: none;
     size: 2em;
     border-radius: 5px;
-    box-shadow: 0 2px 10px var(--red);
     cursor: pointer;
-    
+}
+.btn:hover{
+    box-shadow: 0 2px 10px white;
+
 }
 
 /* modal */
@@ -126,10 +151,10 @@
     padding: 8px;
     box-shadow: 0 2px 10px var(--red);
     border-radius: 16px;
+    cursor: pointer;
     border: none;
     width: 100px;
     height: 40px;
-    cursor: pointer;
     font-size: 15px;
     margin-top: 15px;
 }
@@ -146,9 +171,132 @@
 .lbl_modal{
 	background: var(--red);
 	padding: 11px 36px;
-	border-radius: 4px;
 	cursor: pointer;
     color: white;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
+    border-radius: 5px;
+}
+.lbl_modal:hover{
+    box-shadow: 0 2px 10px var(--red);
+
+}
+
+.error{
+    margin-top: 100px;
+}
+.error h1{
+    margin-bottom: 30px;
+}
+.error button{
+    padding: 10px;
+    font-size:20px;
+    background: #FFD466;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 3px solid #001C63;
+}
+
+.shadow{
+    background: rgba(0, 0, 0, 0.179);
+    color:rgb(77, 77, 77);
+    box-shadow: 0 2px 10px black;
+}
+.bug{
+    background: #009763;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--bug);
+}
+.dragon{
+    background:#A7C5EB;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--dragon);
+}
+.electric{
+    background:#FFC107;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--electric);
+}
+.fairy{
+    background:#FFAEC0;
+    color: #fff;
+    box-shadow: 0 2px 15px var(--fairy);
+}
+.fighting{
+
+    background:#F76135;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--fighting);
+    
+}
+.fire{
+background: #df191c;
+color: #fff;
+box-shadow: 0 2px 10px var(--fire);
+}
+.flying{
+    background:#28527A;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--flying);
+}
+.ghost{
+    background:#7363dc;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--ghost);
+}
+.grass{
+    background:#24D64E;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--grass);
+}
+.ground{
+    background:#CDAC81;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--ground);
+}
+.ice{
+    background:#84DEFF;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--ice);
+    text-shadow: 0 0 3px black;
+}
+.normal{
+    background: var(--normal);
+    color: black;
+    box-shadow: 0 1px 5px rgb(58, 57, 57);
+}
+.poison{
+    background:#93329E;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--poison);
+}
+.psychic{
+    background:#d85c75;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--psychic);
+}
+.rock{
+    background: #58391C;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--rock);
+}
+.steel{
+    background:#6b6b6b;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--steel);
+}
+.water{
+    background:#2653B5;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--water);
+}
+.dark{
+    background:black;
+    color: #fff;
+    box-shadow: 0 2px 5px var(--dark);
+}
+.unknown{
+    background:#b3aee1;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--unknown);
 }

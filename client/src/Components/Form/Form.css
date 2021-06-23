@@ -2,26 +2,38 @@
     width: 350px;
     background: rgb(233, 233, 233);
     border: 1px solid black;
-    padding: 22px;
+    padding: 10px;
     margin: auto;
     margin-top: 45px;
     border-radius: 16px;
     box-shadow: 0 0 8px 4px rgba(61, 61, 61, 0.515);
+
+}
+form p{
+    margin: 10px;
 }
 
-.form input{
-    
+.campo_valido{
+    border: 2px solid black;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 16px;
     outline: none;
    
+   
 }
+.campo_invalido{
+    border: 2px solid red;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 16px;
+    outline: none;
+}
+
 .btn_active{
     text-shadow: 0 1px 4px rgba(0,0,0, .5);
-    margin: 10px 0;
-    padding: 7px;
     background: var(--red);
+    margin-bottom: 15px;
     color: white;
     border-radius: 16px;
     border: none;
@@ -35,9 +47,8 @@
 
 .btn_desactive{
     position: relative;
-    margin: 10px 0;
-    padding: 7px;
     background: #424242;
+    margin-bottom: 15px;
     color: rgb(119, 119, 119);
     border-radius: 16px;
     border: 1px solid black;
@@ -55,6 +66,4 @@
     height: 50%;
     background: rgba(255,255,255,.1)
 }
-
-
 
