@@ -21,9 +21,6 @@ useEffect(() => {
 }, [dispatch,id])
 
 
-
-console.log("detalle", detailPokemon)
-
 return (
     <div>
         {detailPokemon ===null && <h1>Ocurrió un error inesperado</h1>}

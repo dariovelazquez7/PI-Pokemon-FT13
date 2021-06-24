@@ -19,7 +19,7 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 loading: false,
                 initialPokemons: action.payload,
-                totalPokemons: action.payload,
+                totalPokemons: action.payload
             }
         
         case GET_POKEMON:

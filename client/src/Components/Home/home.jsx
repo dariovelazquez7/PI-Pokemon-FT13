@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
-import imgLoading from "../../Img/loading.gif";
 import "./home.module.css"
 import style from "./home.module.css";
-import { useSelector , useDispatch} from "react-redux";
+import imgLoading from "../../Img/loading.gif";
 import error from "../../Img/psyduck.png"
 import egg from "../../Img/egg.png";
 import wobbu from "../../Img/wobbu.png";
+import { useSelector , useDispatch} from "react-redux";
 import {getInitialPokemons} from "../../Actions/actions";
-
 import {TiMediaRewind, TiMediaFastForward} from "react-icons/ti";
 import { useHistory} from "react-router-dom";
 import {BiRefresh} from "react-icons/bi";
-
-
 
 
 function Home() {
@@ -28,8 +25,8 @@ const dispatch = useDispatch()
     select: "Numeracion",
     check: [],
     filtroPorTipo: undefined,
-    filtrado:  undefined,
-    fil: undefined,
+    filtradoBaseDatos:  undefined,
+    filtradoOriginales: undefined,
     aux: undefined,
   })
 
@@ -86,20 +83,20 @@ if(state.filtroPorTipo?.length > 0){
 
 function filtradoBaseDatos() {
    let baseDatos = totalPokemons.filter(pokemon => pokemon.id > 898)
-  setState({...state, filtrado: baseDatos, aux: false, prev: 0, next: 12})
+  setState({...state, filtradoBaseDatos: baseDatos, aux: false, prev: 0, next: 12})
   }
 
 function filtradoOriginales () {
   let originales = totalPokemons.filter(pokemon => pokemon.id < 898)
-  setState({...state, fil: originales, aux: true, prev: 0, next: 12})
+  setState({...state, filtradoOriginales: originales, aux: true, prev: 0, next: 12})
 }
 
 
-  if(state.filtrado?.length > 0 && state.aux === false){
-    allPokemons= state.filtrado
+  if(state.filtradoBaseDatos?.length > 0 && state.aux === false){
+    allPokemons= state.filtradoBaseDatos
   }
-  if(state.fil?.length > 0 && state.aux === true){
-    allPokemons= state.fil
+  if(state.filtradoOriginales?.length > 0 && state.aux === true){
+    allPokemons= state.filtradoOriginales
   }
 let initialPokemons = allPokemons?.slice(state.prev,state.next)
 
@@ -403,10 +400,10 @@ if(!loading && !allPokemons){
             </div>
 
             <div className={style.div_btn}>
-              {initialPokemons?.length !== 0 &&
+              {!loading &&
                 <button className={style.btn} onClick={handlePrev}> <TiMediaRewind size="1.5em" color="white"/></button> 
               }
-              {initialPokemons?.length !== 0 &&
+              {!loading &&
                 <button className={style.btn} onClick={handleNext}> <TiMediaFastForward size="1.5em" color="white"/> </button>
               }
             </div>

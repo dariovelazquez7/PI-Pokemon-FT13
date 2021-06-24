@@ -9,9 +9,7 @@
 
     
 }
-.notFound{
-    margin-top: 100px;
-}
+
 
 .container{
    
@@ -22,7 +20,7 @@
    margin: 20px 160px;
    border-radius: 10px;
    align-content: space-around;
-   min-height: 700px;
+   min-height: 500px;
    
 }
 
