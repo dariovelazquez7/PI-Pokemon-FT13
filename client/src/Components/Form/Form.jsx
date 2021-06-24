@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Navbar from "../Navbar/navbar.jsx"
 import "./Form.css"
@@ -28,10 +28,6 @@ function Form() {
     })
     
     const [errors, setErrors] = useState("")
-
-    useEffect(() => {
-       
-    }, [])
     
     let arr = []
     const Allchecked =() => {
@@ -110,7 +106,7 @@ function Form() {
         document.getElementById("btn_submit").disabled= false
     }
    
-console.log("creado",pokemonCreated)
+console.log("creado:",pokemonCreated)
 return (
     <div>
         <Navbar/>
@@ -146,7 +142,7 @@ return (
             <Types />
 
             </span>
-            <br />
+           
 
             <button disabled className={form.peso === ""? "btn_desactive": "btn_active"} 
                 id="btn_submit" onClick={handleSubmit}> Crear 

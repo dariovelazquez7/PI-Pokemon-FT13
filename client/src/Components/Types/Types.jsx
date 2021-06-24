@@ -24,7 +24,7 @@ function Types() {
    }
 
     return (
-        <div>
+        <div className="container">
             <div className="types">
         <div>
                 <label htmlFor="normal">

@@ -5,9 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- 
+  font-weight: bold;
 
- background: url("https://www.astrobio.net/images/galleryimages_images/Gallery_Image_10257.jpg");
+ background-image: linear-gradient(
+  rgb(43 42 42 / 30%),
+  rgb(0 0 0 / 30%)
+),url("https://www.astrobio.net/images/galleryimages_images/Gallery_Image_10257.jpg");
+min-height: 100vh; 
+  
 }
 
 code {
@@ -67,9 +72,10 @@ select {
   font-size: 1em;
   font-family: 'Open Sans', sans-serif;
   border-radius: 5px;
+  font-weight: bold;
 }
 select:hover{
-  box-shadow: 0 2px 10px #4D6496;
+  box-shadow: 0 0px 10px #4467b1;
 
 }
 select::-ms-expand {

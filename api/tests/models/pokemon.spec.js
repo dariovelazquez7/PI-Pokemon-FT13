@@ -19,4 +19,19 @@ describe('Pokemon model', () => {
       });
     });
   });
+
+  escribe('Validators', () => {
+    beforeEach(() => Pokemon.sync({ force: true }));
+    describe('id', () => {
+      it('should throw an error if id dont is a Primary key', (done) => {
+        Pokemon.create({})
+          .then(() => done(new Error('Id should be a Primary key')))
+          .catch(() => done());
+      });
+      it('should work when its a valid name', () => {
+        Pokemon.create({ name: 'Pikachu' });
+      });
+    });
+  });
+
 });

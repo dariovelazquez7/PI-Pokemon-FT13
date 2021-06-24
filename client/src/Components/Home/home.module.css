@@ -1,3 +1,7 @@
+.loading{
+    margin-top: 150px;
+}
+
 .header{
     display: flex;
    justify-content: space-between;
@@ -5,18 +9,21 @@
 
     
 }
+.notFound{
+    margin-top: 100px;
+}
 
 .container{
-    /* background-color: rgb(36, 28, 28); */
+   
    display: flex;
    flex-wrap: wrap;
    justify-content: space-around;
-   align-items: center;
+    color: white;
    margin: 20px 160px;
    border-radius: 10px;
-   box-shadow:  0 0 10px 5px var(--shadow);
-   /* height: 630px;
-   width: 900px; */
+   align-content: space-around;
+   min-height: 700px;
+   
 }
 
 .card{
@@ -24,11 +31,20 @@
     flex-direction: column;
     justify-content: space-around;
     margin: 20px 20px;
-    border: 1px solid white;
+    border: none;
     padding: 5px 30px;
-    min-height: 250px;
+    height: 250px;
     color: white;
     background: black;
+    border-radius: 5px;
+    box-shadow:  0 0 10px 3px var(--normal);
+    transition:  0.4s ease;
+}
+
+.card:hover{
+    transition:  0.4s ease;
+    transform: translateY(10px);
+    transform-origin: center center;
 }
 .refresh{
   
@@ -41,21 +57,35 @@
     height: 40px;
     background: #369243;
     color: white;
-    
+    font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .refresh button:hover{
-    box-shadow: 0 2px 10px #369243;
+    box-shadow: 0 0px 12px #369243;
 }
 
 .filtro{
     width: 250px;
     height: 40px;
 }
+.checkFiltro button{
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    border: 1px solid white;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.checkFiltro button:hover{
+    box-shadow: 0 0 5px white;
 
+}
 
 
 
@@ -115,7 +145,7 @@
 	width: 400px;
 	height: 320px;
 	margin: auto;
-	background: #fff;
+	background: rgba(255, 255, 255, 0.796);
 	box-shadow: 1px 7px 25px rgba(0,0,0,0.6);
 	transition: all 500ms ease;
 	position: relative;
@@ -178,12 +208,13 @@
     border-radius: 5px;
 }
 .lbl_modal:hover{
-    box-shadow: 0 2px 10px var(--red);
+    box-shadow: 0 0 12px var(--red);
 
 }
 
 .error{
     margin-top: 100px;
+    color: white
 }
 .error h1{
     margin-bottom: 30px;
@@ -195,6 +226,7 @@
     border-radius: 10px;
     cursor: pointer;
     border: 3px solid #001C63;
+    color: #001C63;
 }
 
 .shadow{
@@ -216,11 +248,14 @@
     background:#FFC107;
     color: #fff;
     box-shadow: 0 2px 10px var(--electric);
+    text-shadow: 0 0 4px black;
 }
 .fairy{
     background:#FFAEC0;
     color: #fff;
     box-shadow: 0 2px 15px var(--fairy);
+    text-shadow: 0 0 4px black;
+    
 }
 .fighting{
 
@@ -237,7 +272,7 @@ box-shadow: 0 2px 10px var(--fire);
 .flying{
     background:#28527A;
     color: #fff;
-    box-shadow: 0 2px 10px var(--flying);
+    box-shadow: 0 0px 10px var(--flying);
 }
 .ghost{
     background:#7363dc;
@@ -253,12 +288,13 @@ box-shadow: 0 2px 10px var(--fire);
     background:#CDAC81;
     color: #fff;
     box-shadow: 0 2px 10px var(--ground);
+    text-shadow: 0 0 4px black;
 }
 .ice{
     background:#84DEFF;
     color: #fff;
     box-shadow: 0 2px 10px var(--ice);
-    text-shadow: 0 0 3px black;
+    text-shadow: 0 0 4px black;
 }
 .normal{
     background: var(--normal);
@@ -293,10 +329,10 @@ box-shadow: 0 2px 10px var(--fire);
 .dark{
     background:black;
     color: #fff;
-    box-shadow: 0 2px 5px var(--dark);
+    box-shadow: 0 2px 6px white
 }
 .unknown{
     background:#b3aee1;
     color: #fff;
-    box-shadow: 0 2px 10px var(--unknown);
+    box-shadow: 0 0px 10px var(--unknown);
 }

@@ -2,7 +2,7 @@ import React, { useState} from "react";
 import pokemon from "../../Img/pokemon.png";
 import style from "./navbar.module.css"
 import {Link} from "react-router-dom"
-import {BsSearch} from "react-icons/bs"
+import {ImSearch} from "react-icons/im"
 import { useHistory} from "react-router-dom"
 import {CgPokemon, CgHome, CgToday} from "react-icons/cg"
 import {getPokemon} from "../../Actions/actions"
@@ -42,7 +42,7 @@ function Navbar() {
 
             <Link to={"/form"}> 
             <li>
-                    <CgPokemon fontSize="36px" />
+                    <CgPokemon fontSize="36px"/>
                     <span>Crea tu Pokemón! </span> 
             </li>
             </Link> 
@@ -56,20 +56,18 @@ function Navbar() {
             </Link>
                 </div>
             </nav>
-
+                <Link to={"/home"}>
                 <div><img src={pokemon} alt="" height="70px" width="200px" /></div>
+                </Link>
             <div>
             <form  >
-            <div >
-                <input type="search"
+            <div className={style.btn_search}>
+                <input type="text"
                 autoComplete="off"
                 placeholder="Busca por nombre..."
                 onChange={handleChange}
                 />
-                <button onClick={handleSubmit}> 
-                    {<BsSearch/>}
-                </button>
-            
+                <button onClick={handleSubmit}> <ImSearch/></button>
             </div>
         </form>
             </div>

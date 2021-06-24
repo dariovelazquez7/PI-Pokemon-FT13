@@ -4,23 +4,23 @@ import "./home.module.css"
 import style from "./home.module.css";
 import { useSelector , useDispatch} from "react-redux";
 import error from "../../Img/psyduck.png"
-import {getInitialPokemons} from "../../Actions/actions";
 import egg from "../../Img/egg.png";
+import wobbu from "../../Img/wobbu.png";
+import {getInitialPokemons} from "../../Actions/actions";
+
 import {TiMediaRewind, TiMediaFastForward} from "react-icons/ti";
-import {Link} from "react-router-dom";
+import { useHistory} from "react-router-dom";
+import {BiRefresh} from "react-icons/bi";
 
 
 
 
 function Home() {
+const history = useHistory()
 let allPokemons= useSelector(state => state.initialPokemons)
+let totalPokemons= useSelector(state => state.totalPokemons)
 const loading = useSelector(state => state.loading)
 const dispatch = useDispatch()
-
-
-let arrayCheckbox = []
-// let allPokemonsLocal= undefined
-
 
   const [state, setState] = useState({
     prev: 0,
@@ -30,30 +30,20 @@ let arrayCheckbox = []
     filtroPorTipo: undefined,
     filtrado:  undefined,
     fil: undefined,
-    aux: undefined
+    aux: undefined,
   })
+
+  const [existe, setExiste] = useState(true)
 
   useEffect(() => {
     setState({ prev: 0, next: 12})
+    localStorage.setItem("TotalPokemonLocal", JSON.stringify(totalPokemons))
     
-    
-    
-  }, [])
+  }, [totalPokemons])
 
-
-  // function savePokemonsLocalStorage () {
-  //   localStorage.setItem("allPokemonLocal", JSON.stringify(allPokemons))
-  // }
-  // savePokemonsLocalStorage();
-  
-  // function getPokemonsLocalStorage (){
-  //   allPokemonsLocal= JSON.parse( localStorage.getItem("allPokemonLocal"))
-    
-  // }
-  // getPokemonsLocalStorage(); 
- 
 
 //filtrado//
+let arrayCheckbox = []
 const CheckboxTypes =() => {
   let checks = document.querySelectorAll(".check")
   checks.forEach(e => {
@@ -61,24 +51,31 @@ const CheckboxTypes =() => {
         arrayCheckbox.push(e.id)
         if(arrayCheckbox.length > 1){
           e.checked =false
-      
         }
-        }
+      }
   });
 }
 
+
 function handleChange () { 
-  setState({...state,  check:arrayCheckbox})
   CheckboxTypes()
-  
+  setState({...state,  check:arrayCheckbox})
 }
 
 
 function handleSubmit(){
-  if(state.check)
-  var checktype = state.check[0]
-  var lista= allPokemons.filter(pokemon => pokemon.tipos.includes(checktype))
-  setState({...state, filtroPorTipo: lista})
+  if(state.check?.length){
+    var checktype = state?.check[0]
+    var lista= totalPokemons.filter(pokemon => pokemon.tipos.includes(checktype))
+    setState({...state, filtroPorTipo: lista})
+    if(lista.length === 0){setExiste(false)}
+    else setExiste(true)
+  }
+  else{ 
+    setState({...state, filtroPorTipo: totalPokemons})
+    setExiste(true)
+  }
+  
 }
 
 if(state.filtroPorTipo?.length > 0){
@@ -88,14 +85,15 @@ if(state.filtroPorTipo?.length > 0){
 
 
 function filtradoBaseDatos() {
-   let baseDatos = allPokemons.filter(pokemon => pokemon.id > 898)
-  setState({...state, filtrado: baseDatos, aux: false})
+   let baseDatos = totalPokemons.filter(pokemon => pokemon.id > 898)
+  setState({...state, filtrado: baseDatos, aux: false, prev: 0, next: 12})
   }
 
 function filtradoOriginales () {
-  let originales = allPokemons.filter(pokemon => pokemon.id < 898)
-  setState({...state, fil: originales, aux: true })
+  let originales = totalPokemons.filter(pokemon => pokemon.id < 898)
+  setState({...state, fil: originales, aux: true, prev: 0, next: 12})
 }
+
 
   if(state.filtrado?.length > 0 && state.aux === false){
     allPokemons= state.filtrado
@@ -105,11 +103,10 @@ function filtradoOriginales () {
   }
 let initialPokemons = allPokemons?.slice(state.prev,state.next)
 
+useEffect(() => {
+  localStorage.setItem("allPokemonLocal", JSON.stringify(allPokemons))
   
-  
-  console.log(loading)
-  console.log(allPokemons)
-
+},[initialPokemons, allPokemons])
 
   
 
@@ -117,7 +114,7 @@ let initialPokemons = allPokemons?.slice(state.prev,state.next)
 
   //orden
   if(state.select === "Numeracion"){
-    allPokemons.sort((a,b) => {
+    allPokemons?.sort((a,b) => {
       if(a.id < b.id){
         return -1
       }
@@ -187,9 +184,13 @@ let initialPokemons = allPokemons?.slice(state.prev,state.next)
     if(state.prev >= 12)
     setState({...state, next: state.next-12, prev: state.prev-12})
   }
+
+  const onDetailsPokemon = (pokemonId) => {
+    history.push(`/home/pokemon/${pokemonId}`)
+  }
   
 
-if(!loading && allPokemons.length=== 0){
+if(!loading && !allPokemons){
   return (
     <div className={style.error}>
       <h1>Ups!</h1>
@@ -360,28 +361,37 @@ if(!loading && allPokemons.length=== 0){
             </div>
             </div>
             <div className={style.refresh}>
-              <span>  <button onClick={()=> dispatch(getInitialPokemons())}>Refresh</button></span>
+              <span>  
+                <button onClick={()=> dispatch(getInitialPokemons())}>Obtén otros pokemons<BiRefresh fontSize="30px"/>
+                </button> 
+              
+              </span>
             </div>
           </div>
            
-            <div>
-              <button onClick={filtradoBaseDatos}>Mostrar solo pokemons creados</button>
-              <button onClick={filtradoOriginales}>Mostrar solo pokemons existentes</button>
+            <div className={style.checkFiltro}>
+              
+              <button onClick={filtradoBaseDatos}>Solo pokemons creados</button>
+              <button onClick={filtradoOriginales}>Solo pokemons existentes</button>
             </div>
 
-            <div className={style.container}>
-            {/* !initialPokemons?.length  && */}
                 { loading &&
-                <img src={imgLoading} alt="" height="60px" width="60px"/> }
+                <img className={style.loading}  src={imgLoading} alt="" height="60px" width="60px"/> }
+            <div className={style.container}>
+
+                { !loading && !existe && <div className={style.notFound}> 
+                  <h1>No se encontraron pokemons con ese tipo</h1>
+                  <img src={wobbu}  height="200px" width="150px" alt="" /> 
+                  <h2>Intenta con otros</h2>
+                  </div>}
              
-               
-              { !loading && initialPokemons.length > 0  && initialPokemons.map(pokemon => 
-              <div className={style.card} key={pokemon.id}>
+              { !loading && existe && initialPokemons.length > 0  && initialPokemons.map(pokemon => 
+              <div className={style.card} key={pokemon.id} onClick={() =>onDetailsPokemon(pokemon.id)}>
                 #{pokemon.id} {pokemon.nombre[0].toUpperCase() + pokemon.nombre.slice(1)} 
-                {pokemon.imagen? <div><Link to={`/home/pokemon/${pokemon.id}`}> <img src={pokemon.imagen} alt="" height="120px" width="120px"/></Link></div>
-                :<div> <Link to={`/home/pokemon/${pokemon.id}`}><img src={egg} alt="" height="120px" width="120px"/></Link></div>}
-                {pokemon.tipos.map(e => 
-                <li className={e === "bug"? style.bug : e === "fire"? style.fire: e === "shadow"? style.shadow:
+                {pokemon.imagen? <div><img src={pokemon.imagen} alt="" height="120px" width="120px"/></div>
+                :<div><img src={egg} alt="" height="120px" width="120px"/></div>}
+                {pokemon.tipos.map((e,i) => 
+                <li  key={i} className={e === "bug"? style.bug : e === "fire"? style.fire: e === "shadow"? style.shadow:
                 e === "dragon"? style.dragon: e === "electric"? style.electric: e === "fairy"? style.fairy:
                 e === "fighting"? style.fighting: e === "fire"? style.fire: e === "flying"? style.flying:
                 e === "ghost"? style.ghost: e === "grass"? style.grass: e === "ground"? style.ground:
@@ -393,10 +403,10 @@ if(!loading && allPokemons.length=== 0){
             </div>
 
             <div className={style.div_btn}>
-              {initialPokemons.length !== 0 &&
+              {initialPokemons?.length !== 0 &&
                 <button className={style.btn} onClick={handlePrev}> <TiMediaRewind size="1.5em" color="white"/></button> 
               }
-              {initialPokemons.length !== 0 &&
+              {initialPokemons?.length !== 0 &&
                 <button className={style.btn} onClick={handleNext}> <TiMediaFastForward size="1.5em" color="white"/> </button>
               }
             </div>

@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const axios = require('axios').default;
-const { Pokemon, Tipo } = require('../db.js');
+const { Pokemon, Tipo, type_pokemon } = require('../db.js');
 
 const { conn } = require('../db.js');
 // Importar todos los routers;
@@ -44,7 +44,7 @@ router.get("/pokemons/", async (req,res,next)=>{
          }
       })
   
-      return res.json([...pokemon, ...pokemonsDB])
+      return res.status(200).json([...pokemon, ...pokemonsDB])
     }
     catch(error){
       return res.status(404).send(error)
@@ -77,7 +77,7 @@ router.get("/pokemons/:id", async (req, res)=>{
          altura: altura.join(""),
          peso: peso.join("")
       }
-      return res.json(pokemon)
+      return res.status(200).json(pokemon)
    }
    catch(error){
       if(error){
@@ -91,7 +91,7 @@ router.get("/pokemons/:id", async (req, res)=>{
          
          if(pokemon){
             let obj = {...pokemon.dataValues,tipos: pokemon.tipos.map(e => e.name)}
-            return res.json(obj)}
+            return res.status(200).json(obj)}
          else return res.status(404).send("El id no corresponde a un pokemon valido.")
       })
       .catch(() =>{
@@ -162,14 +162,24 @@ router.post("/pokemons", async (req,res)=>{
       nombre: nombre?.toLowerCase(),
       id: parseInt( id + allPokemon.length),
    })
-   pokemon.tipos.forEach(async type => pokemonCreated.addTipo(await Tipo.findOne({  
+      pokemon.tipos.forEach(async type =>  await pokemonCreated.addTipos(await Tipo.findOne({  
+         where: {
+            name: type,
+            
+         },
+         
+      })))
+
+   var findTypes =  await Tipo.findAll({  
       where: {
-         name: type,
+         name: pokemon.tipos,
       }
-   })))
+   })
+  
 
-
-   return res.json(pokemonCreated)
+   
+   return res.json({...pokemonCreated.dataValues, tipos: findTypes.map(e => e.dataValues.name)})
+   // return res.json(pokemonCreated)
    }
    catch(error){
       res.send("hubo un error")

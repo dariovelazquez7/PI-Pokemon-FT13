@@ -1,7 +1,9 @@
+
 .types {
     display: flex;
     flex-wrap: wrap;
    max-width: 1200px;
+   font-weight: normal;
    
 }
 .types div {
@@ -13,6 +15,7 @@
 }
 .types div label input[type="checkbox"]{
     display: none;
+
 }
 .types div label span{
     position: relative;
@@ -33,7 +36,8 @@
     left:0;
     width: 100%;
     height: 50%;
-    background: rgba(255,255,255,.1)
+    background: rgba(255,255,255,.1);
+    
 }
 
 .types div:nth-child(20n +1) label input[type="checkbox"]:checked ~ span{

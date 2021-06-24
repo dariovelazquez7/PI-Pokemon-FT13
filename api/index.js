@@ -28,10 +28,7 @@ conn.sync({ force: true }).then(() => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 
-  // Pokemon.create({
-  //   id: 899,
-  //   name: "puchamon"
-  // })
+
  //precarga
   axios.get("https://pokeapi.co/api/v2/type")
   .then(r => {
