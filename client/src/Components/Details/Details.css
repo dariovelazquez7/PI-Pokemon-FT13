@@ -1,0 +1,559 @@
+.loading{
+    margin-top: 300px;
+}
+.notFound{
+    margin-top: 150px;
+    color: white;
+}
+
+.container {
+    color: white;
+}
+.container h2{
+    margin: 5px 0;
+    text-decoration: underline;
+}
+
+.container li{
+    display: inline-block;
+    margin: 0 5px;
+    border: none;
+    padding: 4px;
+    border-radius: 8px;
+    min-width: 70px;
+   }
+
+.container button{
+    padding: 10px;
+    background: var(--banner);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.container button:hover{
+    box-shadow: 0 2px 10px var(--normal);
+    cursor: pointer;
+}
+.error{
+    color: white;
+    margin-top: 150px;
+}
+
+
+/* cards_types */
+
+.card_unknown{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--unknown) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+    background: black;
+}
+.card_unknown:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+
+.card_water{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--water) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_water:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_shadow{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow: 0 0 20px 10px rgb(134 131 131) inset, 0 0 20px 3px rgb(134 131 131);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+    background:rgba(0, 0, 0, 0.57);
+   
+   
+}
+.card_shadow:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_bug{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--bug) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_bug:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_dragon{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--dragon) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_dragon:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_electric{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--electric) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_electric:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_fairy{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 10px var(--fairy) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_fairy:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_fighting{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    background: black;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 10px #fd8c37 inset;
+    
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_fighting:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_fire{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 10px var(--fire) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_fire:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_flying{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--flying) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_flying:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_ghost{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--ghost) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_ghost:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_grass{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 9px var(--grass) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_grass:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_ground{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--ground) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_ground:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_ice{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--ice) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_ice:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_normal{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 4px var(--normal);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_normal:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_poison{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--poison) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_poison:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_psychic{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--psychic) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_psychic:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_rock{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--rock) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_rock:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_steel{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 12px var(--steel) inset;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_steel:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+.card_dark{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+    height: 450px;
+    width: 300px;
+    margin: 135px auto;
+    box-shadow:  0 0 20px 2px #ffffff inset, 0 0 20px 2px #000000 inset, 0 0 24px 10px #380202;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition:  0.4s ease;
+}
+.card_dark:hover{
+    transition:  0.4s ease;
+    transform: scale(1.03);
+}
+
+
+
+/* types */
+
+.shadow{
+    background: rgb(134 131 131);
+    color: rgb(0 0 0);
+    box-shadow: 0 0 10px 3px #ffffff;
+}
+.bug{
+    background: #009763;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--bug);
+}
+.dragon{
+    background:#A7C5EB;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--dragon);
+}
+.electric{
+    background:#FFC107;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--electric);
+}
+.fairy{
+    background:#FFAEC0;
+    color: #fff;
+    box-shadow: 0 2px 15px var(--fairy);
+}
+.fighting{
+
+    background:#F76135;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--fighting);
+    
+}
+.fire{
+background: #df191c;
+color: #fff;
+box-shadow: 0 2px 10px var(--fire);
+}
+.flying{
+    background:#28527A;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--flying);
+}
+.ghost{
+    background:#7363dc;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--ghost);
+}
+.grass{
+    background:#24D64E;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--grass);
+}
+.ground{
+    background:#CDAC81;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--ground);
+}
+.ice{
+    background:#84DEFF;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--ice);
+    text-shadow: 0 0 3px black;
+}
+.normal{
+    background: var(--normal);
+    color: black;
+    box-shadow: 0 1px 5px rgb(58, 57, 57);
+}
+.poison{
+    background:#93329E;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--poison);
+}
+.psychic{
+    background:#d85c75;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--psychic);
+}
+.rock{
+    background: #58391C;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--rock);
+}
+.steel{
+    background:#6b6b6b;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--steel);
+}
+.water{
+    background:#2653B5;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--water);
+}
+.dark{
+    background:black;
+    color: #fff;
+    box-shadow: 0 0 5px var(--normal);
+}
+.unknown{
+    background:#b3aee1;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--unknown);
+}

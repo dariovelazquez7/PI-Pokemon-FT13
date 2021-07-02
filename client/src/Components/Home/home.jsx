@@ -22,7 +22,7 @@ const dispatch = useDispatch()
   const [state, setState] = useState({
     prev: 0,
     next: 12,
-    select: "Numeracion",
+    select: "",
     check: [],
     filtroPorTipo: undefined,
     filtradoBaseDatos:  undefined,
@@ -64,7 +64,7 @@ function handleSubmit(){
   if(state.check?.length){
     var checktype = state?.check[0]
     var lista= totalPokemons.filter(pokemon => pokemon.tipos.includes(checktype))
-    setState({...state, filtroPorTipo: lista})
+    setState({...state, filtroPorTipo: lista,  prev: 0, next: 12})
     if(lista.length === 0){setExiste(false)}
     else setExiste(true)
   }
@@ -80,7 +80,6 @@ if(state.filtroPorTipo?.length > 0){
 }
 
 
-
 function filtradoBaseDatos() {
    let baseDatos = totalPokemons.filter(pokemon => pokemon.id > 898)
   setState({...state, filtradoBaseDatos: baseDatos, aux: false, prev: 0, next: 12})
@@ -90,7 +89,9 @@ function filtradoOriginales () {
   let originales = totalPokemons.filter(pokemon => pokemon.id < 898)
   setState({...state, filtradoOriginales: originales, aux: true, prev: 0, next: 12})
 }
-
+function allpokemons () {
+  setState({...state, aux: undefined, prev: 0, next: 12})
+}
 
   if(state.filtradoBaseDatos?.length > 0 && state.aux === false){
     allPokemons= state.filtradoBaseDatos
@@ -98,7 +99,12 @@ function filtradoOriginales () {
   if(state.filtradoOriginales?.length > 0 && state.aux === true){
     allPokemons= state.filtradoOriginales
   }
+  
+
+  console.log("orig",state.filtradoOriginales ,"base", state.filtradoBaseDatos)
+
 let initialPokemons = allPokemons?.slice(state.prev,state.next)
+
 
 useEffect(() => {
   localStorage.setItem("allPokemonLocal", JSON.stringify(allPokemons))
@@ -110,6 +116,11 @@ useEffect(() => {
 
 
   //orden
+
+  const selectOptionOrder = (e) =>{
+    setState({...state,[e.target.id]: e.target.value})
+  }
+  
   if(state.select === "Numeracion"){
     allPokemons?.sort((a,b) => {
       if(a.id < b.id){
@@ -166,9 +177,7 @@ useEffect(() => {
     })
   }
 
-  const selectOptionOrder = (e) =>{
-    setState({...state,[e.target.id]: e.target.value})
-  }
+  
 
 //paginado
   const handleNext = () => {    
@@ -207,7 +216,7 @@ if(!loading && !allPokemons){
             <div className="select">
                 <select id="select" onChange={selectOptionOrder} >
                     <option  defaultValue >Ordenar por... </option>
-                    <option value="A-Z">A-Z</option>
+                    <option id="A-Z" value="A-Z">A-Z</option>
                     <option value="Z-A">Z-A</option>
                     <option value="Fuerza">Mas Fuerte</option>
                     <option value="Debil">Mas Debil</option>
@@ -369,7 +378,8 @@ if(!loading && !allPokemons){
             <div className={style.checkFiltro}>
               
               <button onClick={filtradoBaseDatos}>Solo pokemons creados</button>
-              <button onClick={filtradoOriginales}>Solo pokemons existentes</button>
+              <button onClick={filtradoOriginales}>Solo pokemons originales</button>
+              <button onClick={allpokemons}>Todos</button>
             </div>
 
                 { loading &&
@@ -400,12 +410,12 @@ if(!loading && !allPokemons){
             </div>
 
             <div className={style.div_btn}>
-              {!loading &&
-                <button className={style.btn} onClick={handlePrev}> <TiMediaRewind size="1.5em" color="white"/></button> 
+              {!loading && state.prev >= 12?
+                <button className={style.btn} onClick={handlePrev}> <TiMediaRewind size="1.5em" color="white"/></button>: false 
               }
-              {!loading &&
-                <button className={style.btn} onClick={handleNext}> <TiMediaFastForward size="1.5em" color="white"/> </button>
-              }
+              {!loading && initialPokemons.length >= 12 ?
+                <button className={style.btn} onClick={handleNext}> <TiMediaFastForward size="1.5em" color="white"/> </button>: false
+              } 
             </div>
         </div>
     )

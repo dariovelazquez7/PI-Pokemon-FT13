@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Navbar from "../Navbar/navbar.jsx"
 import "./Form.css"
-import { useDispatch,useSelector} from "react-redux"
+import { useDispatch} from "react-redux"
 import {createPokemon} from "../../Actions/actions.js"
 import { useHistory} from "react-router-dom"
 import Types from '../Types/Types.jsx';
@@ -12,7 +12,6 @@ import Types from '../Types/Types.jsx';
 
 function Form() {
    
-    const pokemonCreated = useSelector(state => state.pokemonCreated)
     const dispatch = useDispatch()
     
     const [form, setForm] = useState({
@@ -31,13 +30,11 @@ function Form() {
     
     let arr = []
     const Allchecked =() => {
-        const checks = document.querySelectorAll(".check")
-        checks.forEach(e => {
-            let aux = []
-            aux.push(e.checked)
+        const checkeated = document.querySelectorAll(".check")
+        checkeated.forEach(e => {
             if(e.checked === true ){
                 arr.push(e.id)
-                if(arr.length === 3){
+                if(arr.length > 2){
                     e.checked = false
                 }
              }
@@ -72,6 +69,8 @@ function Form() {
       };
 
    const handleChange = (e) => {
+       buttonActive()
+       Allchecked() 
         setErrors(validate(setForm({
             ...form,
             [e.target.name]: e.target.value,
@@ -85,8 +84,6 @@ function Form() {
         tipos: arr
        
     })
-        buttonActive()
-        Allchecked() 
        
    }
 
@@ -106,7 +103,7 @@ function Form() {
         document.getElementById("btn_submit").disabled= false
     }
    
-console.log("creado:",pokemonCreated)
+
 return (
     <div>
         <Navbar/>

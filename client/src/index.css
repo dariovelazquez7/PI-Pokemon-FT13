@@ -10,7 +10,7 @@ body {
  background-image: linear-gradient(
   rgb(43 42 42 / 30%),
   rgb(0 0 0 / 30%)
-),url("https://www.astrobio.net/images/galleryimages_images/Gallery_Image_10257.jpg");
+),url("../src/Img/fondo.jpg");
 min-height: 100vh; 
   
 }

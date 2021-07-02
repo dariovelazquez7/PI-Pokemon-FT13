@@ -1,4 +1,4 @@
-import {GET_INITIAL_POKEMONS, GET_POKEMON, LOADING, CREATE_POKEMON, GET_POKEMON_DETAIL} from "../Actions/actions"
+import {GET_INITIAL_POKEMONS, GET_POKEMON, LOADING, CREATE_POKEMON, GET_POKEMON_DETAIL, GET_TYPES} from "../Actions/actions"
 
 const initialState = {
     totalPokemons: JSON.parse( localStorage.getItem("TotalPokemonLocal")),
@@ -6,6 +6,7 @@ const initialState = {
     pokemon: undefined,
     loading: false,
     details: undefined,
+    types: undefined,
     pokemonCreated: {},
     checks: []
 
@@ -45,6 +46,11 @@ function rootReducer (state = initialState, action) {
             ...state,
                 pokemonCreated: action.payload
         }
+        case GET_TYPES:
+            return {
+                ...state,
+                types: action.payload 
+            }
         
         default: return state
     }

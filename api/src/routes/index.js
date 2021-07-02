@@ -192,7 +192,8 @@ router.post("/pokemons", async (req,res)=>{
 
 router.get("/types", async (req, res)=> {
    const typesBD = await Tipo.findAll({include : Pokemon })
-   res.json(typesBD)
+
+   res.json(typesBD.map(elemento => elemento.name))
 })
 
 //get para obtener pokemons por su tipo pero solo en base de datos

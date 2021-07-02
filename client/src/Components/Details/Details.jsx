@@ -1,14 +1,18 @@
 import React,{useEffect} from 'react'
 import { useSelector, useDispatch} from "react-redux";
-import style from "./Details.module.css";
+// import from "./Details.module.css";
+import "./Details.css"
 import imgLoading from "../../Img/loading.gif";
 import egg from "../../Img/egg.png"
-import  {pokemonDetail}  from '../../Actions/actions';
+import escuero from "../../Img/escuero.png";
+import  {pokemonDetail, getTypes}  from '../../Actions/actions';
 import { useParams } from 'react-router-dom';
 
 function Details() {
 const  detailPokemon = useSelector(state => state.details)
 const loading = useSelector(state => state.loading)
+const types = useSelector(state => state.types)
+
 const  dispatch = useDispatch()
 
 
@@ -17,32 +21,44 @@ let {id} = useParams()
 
 useEffect(() => {
     dispatch(pokemonDetail(id))
-   
-}, [dispatch,id])
+    dispatch(getTypes()) 
+}, [dispatch,id ])
 
 
+var type =  types?.find(pokemon => pokemon === detailPokemon?.tipos[0])
+
+if(detailPokemon ===null && !loading){
+    return(
+        <div className={"error"}>
+            <h1>Vamo' a calmarno'</h1>
+            <img src={escuero} height="250px" width="250px"  alt=""/>
+            <h2>Has modificado el id del pokemon por uno no válido.</h2>
+        </div>
+        )
+} else 
 return (
-    <div>
-        {detailPokemon ===null && <h1>Ocurrió un error inesperado</h1>}
-        {loading && <img className={style.loading}  src={imgLoading} alt="" height="60px" width="60px"/>}
+    <div className={"container"}>
+      
+       {loading && <img className={"loading"}  src={imgLoading} alt="" height="60px" width="60px"/>}
 
         {detailPokemon && !loading &&
-        <div className={style.card}> 
+        <div className={`card_${type}`}> 
             <h2> #{detailPokemon.id} - {detailPokemon.nombre}</h2>
+            
             {detailPokemon.imagen? 
             <img src={detailPokemon.imagen} alt="" height="180px" width="180px"/>:
             <img src={egg} alt="" height="180px" width="180px"/>}
            
 
             <div>
-            {detailPokemon.tipos?.map(e => 
-            <li  key={detailPokemon.id} className={e === "bug"? style.bug : e === "fire"? style.fire: e === "shadow"? style.shadow:
-            e === "dragon"? style.dragon: e === "electric"? style.electric: e === "fairy"? style.fairy:
-            e === "fighting"? style.fighting: e === "fire"? style.fire: e === "flying"? style.flying:
-            e === "ghost"? style.ghost: e === "grass"? style.grass: e === "ground"? style.ground:
-            e === "ice"? style.ice: e === "poison"? style.poison: e === "psychic"? style.psychic: e === "rock"? style.rock:
-            e === "steel"? style.steel: e === "water"? style.water: e=== "dark"? style.dark: e ==="unknown"? style.unknown:
-            e=== "normal"? style.normal: false
+            {detailPokemon.tipos?.map((e,index) => 
+            <li  key={index} className={e === "bug"? "bug" : e === "fire"? "fire": e === "shadow"? "shadow":
+            e === "dragon"? "dragon": e === "electric"? "electric": e === "fairy"? "fairy":
+            e === "fighting"? "fighting": e === "fire"? "fire": e === "flying"? "flying":
+            e === "ghost"? "ghost": e === "grass"? "grass": e === "ground"? "ground":
+            e === "ice"? "ice": e === "poison"? "poison": e === "psychic"? "psychic": e === "rock"? "rock":
+            e === "steel"? "steel": e === "water"? "water": e=== "dark"? "dark": e ==="unknown"? "unknown":
+            e=== "normal"? "normal": false
                 }>{e}</li>)}
             </div>
             
