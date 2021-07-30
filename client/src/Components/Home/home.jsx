@@ -413,9 +413,10 @@ if(!loading && !allPokemons){
               {!loading && state.prev >= 12?
                 <button className={style.btn} onClick={handlePrev}> <TiMediaRewind size="1.5em" color="white"/></button>: false 
               }
-              {!loading && initialPokemons.length >= 12 ?
+              {!loading && allPokemons.length > 12 && initialPokemons.length >= 12 ?
                 <button className={style.btn} onClick={handleNext}> <TiMediaFastForward size="1.5em" color="white"/> </button>: false
               } 
+              {console.log("aca",allPokemons)}
             </div>
         </div>
     )

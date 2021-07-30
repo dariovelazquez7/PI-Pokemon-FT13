@@ -9,7 +9,7 @@ function Error() {
             <h2>Error 404</h2>
             <div>
             <img src={error} alt="" width="200px" height="200px"/>
-            <h3>Page not found</h3>
+            <h2>Page not found</h2>
 
             </div>
         </div>

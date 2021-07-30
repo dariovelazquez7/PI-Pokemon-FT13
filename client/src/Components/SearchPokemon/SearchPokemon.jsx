@@ -47,7 +47,7 @@ getLocalStorage();
 if(pokemonSearch === undefined && !loading){
     return (   
     <div>
-        {pokemonLocal === null && <div className={"notFound"}> 
+        {pokemonLocal === null && <div className={"error"}> 
             <h1>Parece que no se encontraron resultados</h1>
             <img src={wobbu}  height="200px" width="150px" alt="" /> 
             <h2>Intenta otra búsqueda</h2>
@@ -74,11 +74,15 @@ return (
     <div className={"container"}>
     {loading && <img  className={"loading"} src={imgLoading} alt="" height="60px" width="60px"/>}
 
-    { pokemonSearch === null && !loading && <div> <img src={wobbu}  height="200px" width="150px" alt="" /></div>}
+    { pokemonSearch === null && !loading && <div className={"error"}> 
+            <h1>Parece que no se encontraron resultados</h1>
+            <img src={wobbu}  height="200px" width="150px" alt="" /> 
+            <h1>Intenta otra búsqueda...</h1>
+             </div>}
     
     {pokemonSearch && !loading && 
         <div className={`card_${type}`}> 
-        <h2>#{pokemonSearch.id} - {pokemonSearch.nombre}</h2>
+        <h2>#{pokemonSearch.id} - {pokemonSearch.nombre[0].toUpperCase() + pokemonSearch.nombre.slice(1)}</h2>
         {pokemonSearch.imagen?<div> <img src={pokemonSearch.imagen} alt="" height="180px" width="180px"/></div>: 
         <img src={egg} alt="" height="180px" width="180px"/>}
         <div>

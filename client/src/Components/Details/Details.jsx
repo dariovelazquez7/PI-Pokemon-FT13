@@ -32,7 +32,7 @@ if(detailPokemon ===null && !loading){
         <div className={"error"}>
             <h1>Vamo' a calmarno'</h1>
             <img src={escuero} height="250px" width="250px"  alt=""/>
-            <h2>Has modificado el id del pokemon por uno no válido.</h2>
+            <h2>Has modificado el id del pokemon por uno inválido.</h2>
         </div>
         )
 } else 
@@ -43,7 +43,7 @@ return (
 
         {detailPokemon && !loading &&
         <div className={`card_${type}`}> 
-            <h2> #{detailPokemon.id} - {detailPokemon.nombre}</h2>
+            <h2> #{detailPokemon.id} - {detailPokemon.nombre[0].toUpperCase() + detailPokemon.nombre.slice(1)}</h2>
             
             {detailPokemon.imagen? 
             <img src={detailPokemon.imagen} alt="" height="180px" width="180px"/>:
