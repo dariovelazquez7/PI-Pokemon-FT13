@@ -1,6 +1,13 @@
-<p align='left'>
-    <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
+
+# Pokemon App
+
+<p align="left">
+  <img height="150" src="./pokemon.png" />
 </p>
 
-# Individual Project - Henry Pokemon
+## Features
 
+
+-Desarrollo de una SPA (Single Page Application) como parte de mis estudios en Henry, utilizando React y Redux para el Front End. Todos los componentes fueron desarrollados con CSS puro sin uso de librerías externas.
+La SPA consume datos de una API (https://pokeapi.co) a traves de un Back End desarrollado en NodeJS, utilizando Express y PostgreSQL como base de datos.
+Algunos features del proyecto: SearchBar, ordenamientos y filtros, formulario controlado para creacion de un nuevo Pokemon.
