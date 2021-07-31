@@ -30,9 +30,9 @@ var type =  types?.find(pokemon => pokemon === detailPokemon?.tipos[0])
 if(detailPokemon ===null && !loading){
     return(
         <div className={"error"}>
-            <h1>Vamo' a calmarno'</h1>
+            <h1>Tomalo con calma</h1>
             <img src={escuero} height="250px" width="250px"  alt=""/>
-            <h2>Has modificado el id del pokemon por uno inválido.</h2>
+            <h2>El id pokemon es inválido</h2>
         </div>
         )
 } else 

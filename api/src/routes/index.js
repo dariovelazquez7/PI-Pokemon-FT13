@@ -204,5 +204,36 @@ router.get("/types/:type", async (req, res)=> {
       res.json(typesBD)
    })
 
+   router.get("/presentation", async(req, res)=>{
+      let offset= Math.floor(Math.random() * 222)
+      try{const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=30`) 
+      const pokemonUrl = response.data.results.map(e => e.url)
+      const PromiseUrl = await Promise.all(pokemonUrl.map(e => axios.get(e)))
+
+      const pokemon =  PromiseUrl.map(e=> {
+         let tipos = e.data.types.map(e => e.type.name)
+         
+         return {nombre: e.data.name,
+            imagen:e.data.sprites.other['official-artwork'].front_default,
+            id: e.data.id,
+            tipos: tipos,
+         }
+      })
+      // const pokemonsRandoms= pokemon.sort((obj1, obj2) => {
+      //    if(obj1.nombre < obj2.nombre){
+      //       return -1
+      //    } else if (obj1 > obj2){
+      //       return 1;
+      //    } else {
+      //       return 0
+      //    }
+      // })
+      return res.json(pokemon)
+   }
+      catch(err){
+         console.error(err)
+      }
+   })
+
 module.exports = router;
 

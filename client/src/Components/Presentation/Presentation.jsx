@@ -1,21 +1,98 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Link} from "react-router-dom"
 // import style from "./presentation.module.css"
 import style from "./presentation.module.css"
 import { useDispatch} from "react-redux";
-import {getInitialPokemons} from "../../Actions/actions";
+import {getInitialPokemons, pokemonsPresentation} from "../../Actions/actions"
+
+import pokebola from "../../Img/pokebola.png"
+import { useSelector } from "react-redux";
+import imgLoading from "../../Img/loading.gif";
 
 
 function Presentation() {
     const dispatch = useDispatch()
+    const [state, setState] = useState(undefined)
+    const [toggle, setToggle] = useState({})
+    const pokemonPresentation = useSelector(state => state.pokemonPresentation)
+    const loading = useSelector(state => state.loading)
+    
+    const action = () => {
+        const randomPokemons = pokemonPresentation.sort((obj1, obj2) => {
+            if(obj1.nombre < obj2.nombre){
+                return -1
+            } else if (obj1 > obj2){
+                return 1;
+            } else {
+                return 0
+            }
+        })  
+        setState(randomPokemons.slice(0,4))
+          
+    }
+
+    useEffect(() => {
+        dispatch(pokemonsPresentation())
+        action()
+    }, [])
+   
+const handleChange = (e) => {
+    setToggle({...toggle, [e.target.id]: e.target.checked})
+    
+}
+// let arrayPokemons = []
+console.log(state)
     return (
-        <div className={style.body}>
-            <div>
-        
+        <div className={style.bodyPage}>
+            
+            <div className={style.container}>
+                <div className={style.title}>Bienvenidos a pokeApp!</div>
+                
+                {loading? <img className={style.loading}  src={imgLoading} alt="" height="60px" width="60px"/>:
+                state?.map(pokemon => {
+                    
+                    // if(toggle[pokemon.nombre] === true){
+                    //     arrayPokemons.push(pokemon)
+                    // }
+                     return(
+                        
+                        <div className={style.divContain}>
+
+                        <label htmlFor={pokemon.nombre}>
+                        <input  id={pokemon.nombre} type="checkbox" style={{display: "none"}} onChange={handleChange}/>
+                        <span >
+                        <img className={pokemon.tipos[0] === "bug"? style.bug1 : pokemon.tipos[0]  === "fire"? 
+                        style.fire1: pokemon.tipos[0]  === "shadow"? style.shadow1:pokemon.tipos[0]  === "dragon"? style.dragon1:
+                        pokemon.tipos[0]  === "electric"? style.electric1: pokemon.tipos[0]  === "fairy"? style.fairy1:
+                        pokemon.tipos[0]  === "fighting"? style.fighting1: pokemon.tipos[0]  === "fire"? style.fire1: 
+                        pokemon.tipos[0]  === "flying"? style.flying1:pokemon.tipos[0]  === "ghost"? style.ghost1: pokemon.tipos[0]  === "grass"? 
+                        style.grass1: pokemon.tipos[0]  === "ground"? style.ground1:pokemon.tipos[0]  === "ice"? style.ice1: 
+                        pokemon.tipos[0]  === "poison"? style.poison1: pokemon.tipos[0]  === "psychic"? 
+                        style.psychic1: pokemon.tipos[0]  === "rock"? style.rock1:pokemon.tipos[0]  === "steel"? style.steel1: 
+                        pokemon.tipos[0]  === "water"? style.water1: pokemon.tipos[0] === "dark"? style.dark1: pokemon.tipos[0]  ==="unknown"? 
+                        style.unknown1:pokemon.tipos[0] === "normal"? style.normal1: false}  id={pokemon.nombre} src={toggle[pokemon.nombre]? 
+                        pokemon.imagen:pokebola } alt={pokemon.nombre}/>
+                        </span>
+                        </label>
+                       
+                        </div>
+                    )}
+                )}
+                    {/* <div className={style.score}>
+                      <div>Capturados:</div>
+                      <div >{arrayPokemons.length}</div>
+                    </div> */}
+                </div>
+                <div className={style.informacionPage}>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam ex laborum, dolorum nisi earum aliquam quam. Dolorem commodi beatae quibusdam perferendis soluta harum dolorum rem. Corporis perspiciatis velit ipsa porro!
+                </div>
+              <div>  
                 <Link to={"/home"}> 
-                <button onClick={()=> dispatch(getInitialPokemons())}> Start</button>
+                <button className={style.btn} onClick={()=> dispatch(getInitialPokemons())}>Start</button>
                 </Link>
+                <label htmlFor="xD"></label>
             </div>
+            
 
             
          

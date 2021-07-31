@@ -10,9 +10,11 @@ body {
  background-image: linear-gradient(
   rgb(43 42 42 / 30%),
   rgb(0 0 0 / 30%)
-),url("../src/Img/fondo.jpg");
-min-height: 100vh; 
-  
+),url("https://i.imgur.com/jLQtYDA.jpg");
+background-size:cover;
+
+min-height: 100vh
+
 }
 
 code {

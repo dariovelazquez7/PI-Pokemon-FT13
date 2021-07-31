@@ -1,27 +1,373 @@
-.body{
-    
-    height: 100vh;
-    width: 100vw;
-    margin-top: 0;
-    background-image: url("../../Img/pokemon.jpg") ;
-    background-size: cover;
+
+
+.title{
+    display: flex;
+    font-size: 40px;
+    color: white;
+    align-items: center;
 }
-.body button{
-    margin-top: 383px;
-    padding: 53px 42px;
-    border-radius: 50%;
-    border: none;
+.container{
+    display: flex;
+    justify-content: space-around;
+    height: 160px;
+    background: linear-gradient(
+  rgb(43 42 42 / 30%),
+  rgb(0 0 0 / 30%)
+);
+  
+}
+.divContain{
+    display: flex;
+    align-items: center;
+   
+
+}
+
+.loading{
+margin-top: 40px;
+}
+
+.informacionPage{
+    height: 200px;
+    background: linear-gradient( rgb(125 122 122 / 30%), rgb(95 92 92 / 15%) );
+    color: white;
+    font-size: 20px;
+    
+    text-align: initial
+}
+
+.pokemonBtn {
+transition: 0.4s ease;
+  cursor: pointer;
+}
+
+
+.btn{
+    margin-top: 60px;   
+    color: white;
     transition: 0.4s ease;
-    font-size: 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px;
     font-weight: bold;
     box-shadow: 0 0 10px black;
     text-shadow: 0 0 3px black;
-    background: #e6e6e6;
-    
+    background: var(--bug)
+
 }
-.body button:hover{
+.btn:hover{
     transition: 0.4s ease;
     transform: scale(1.05);
     cursor: pointer;
    
-}   
+} 
+
+
+/* types */
+
+.shadow{
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: rgb(134 131 131);
+    box-shadow: 0 0 10px 3px #ffffff;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+
+.shadow:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.bug1{
+    background: #0097628e;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--bug);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.bug1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.dragon1{
+    background:#a7c5eb80;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--dragon);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.dragon1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.electric1{
+    background:#ffc1077e;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--electric);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.electric1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.fairy1{
+    background:#ffaebf82;
+    color: #fff;
+    box-shadow: 0 2px 15px var(--fairy);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.fairy1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.fighting1{
+
+    background:#f762357b;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--fighting);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.fighting1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.fire1{
+background: #df191c80;
+color: #fff;
+box-shadow: 0 2px 10px var(--fire);
+width: 80px;
+height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.fire1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.flying1{
+    background:#28527a77;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--flying);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.flying1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.ghost1{
+    background:#7363dc87;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--ghost);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.ghost1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.grass1{
+    background:#24d64d90;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--grass);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.grass1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.ground1{
+    background:#cdac817c;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--ground);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.ground1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.ice1{
+    background:#84deff8e;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--ice);
+    text-shadow: 0 0 3px black;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.ice1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.normal1{
+    background: rgba(255, 255, 255, 0.46);
+    color: black;
+    box-shadow: 0 1px 5px rgb(58, 57, 57);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+   
+}
+
+.normal1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.poison1{
+    background:#93329e6e;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--poison);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.poison1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.psychic1{
+    background:#d85c7575;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--psychic);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.psychic1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.rock1{
+    background: #58391c77;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--rock);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.rock1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.steel1{
+    background:#6b6b6b59;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--steel);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.steel1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.water1{
+    background:#2653b583;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--water);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.water1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.dark1{
+    background:rgba(0, 0, 0, 0.522);
+    color: #fff;
+    box-shadow: 0 0 5px var(--normal);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+}
+.dark1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}
+.unknown1{
+    background:#b3aee182;
+    color: #fff;
+    box-shadow: 0 2px 10px var(--unknown);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px;
+    transition: 0.4s ease;
+
+}
+.unknown1:hover{
+    transition: 0.4s ease;
+    transform: scale(1.05);
+}

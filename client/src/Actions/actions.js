@@ -7,6 +7,7 @@ export const LOADING = "LOADING";
 export const GET_POKEMON_DETAIL = "GET_POKEMON_DETAIL";
 export const CREATE_POKEMON = "CREATE_POKEMON";
 export const GET_TYPES= "GET_TYPES";
+export const POKEMON_PRESENTATION= "POKEMON_PRESENTATION";
 
 
 
@@ -71,6 +72,18 @@ export const getTypes = () => {
         })
         .catch(() => {
             console.log("Ups! Algo malió sal en 'getTypes'")
+        })
+    }
+}
+
+export const pokemonsPresentation = () =>  {
+    return (dispatch)=>{
+        dispatch({type:LOADING})
+        axios.get("http://localhost:3001/presentation").then(respuesta => {
+            dispatch({type: POKEMON_PRESENTATION, payload: respuesta.data})
+        })
+        .catch(() => {
+            console.log("Ups! Algo malió sal en 'pokemonPresentation'")
         })
     }
 }

@@ -57,7 +57,7 @@
     padding: 10px;
     border-radius: 10px;
     transition:  0.4s ease;
-    background: black;
+    background: #00000078
 }
 .card_unknown:hover{
     transition:  0.4s ease;
@@ -65,7 +65,7 @@
 }
 
 .card_water{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -108,7 +108,7 @@
     transform: scale(1.03);
 }
 .card_bug{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -128,7 +128,7 @@
     transform: scale(1.03);
 }
 .card_dragon{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -148,7 +148,7 @@
     transform: scale(1.03);
 }
 .card_electric{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -168,7 +168,7 @@
     transform: scale(1.03);
 }
 .card_fairy{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -188,7 +188,7 @@
     transform: scale(1.03);
 }
 .card_fighting{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -210,7 +210,7 @@
     transform: scale(1.03);
 }
 .card_fire{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -230,7 +230,7 @@
     transform: scale(1.03);
 }
 .card_flying{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -250,7 +250,7 @@
     transform: scale(1.03);
 }
 .card_ghost{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -270,7 +270,7 @@
     transform: scale(1.03);
 }
 .card_grass{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -290,7 +290,7 @@
     transform: scale(1.03);
 }
 .card_ground{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -310,7 +310,7 @@
     transform: scale(1.03);
 }
 .card_ice{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -330,7 +330,7 @@
     transform: scale(1.03);
 }
 .card_normal{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -350,7 +350,7 @@
     transform: scale(1.03);
 }
 .card_poison{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -370,7 +370,7 @@
     transform: scale(1.03);
 }
 .card_psychic{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -390,7 +390,7 @@
     transform: scale(1.03);
 }
 .card_rock{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -410,7 +410,7 @@
     transform: scale(1.03);
 }
 .card_steel{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -430,7 +430,7 @@
     transform: scale(1.03);
 }
 .card_dark{
-    background: black;
+    background: #00000078;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
