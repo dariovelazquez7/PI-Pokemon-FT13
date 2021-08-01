@@ -8,6 +8,10 @@ import {getInitialPokemons, pokemonsPresentation} from "../../Actions/actions"
 import pokebola from "../../Img/pokebola.png"
 import { useSelector } from "react-redux";
 import imgLoading from "../../Img/loading.gif";
+import columnaPokemon from "../../Img/columnpk.png"
+import github from  "../../Img/github.png"
+import gmail from  "../../Img/gmail.png"
+import linkedin from  "../../Img/linkedin.png"
 
 
 function Presentation() {
@@ -31,10 +35,10 @@ function Presentation() {
           
     }
 
-    useEffect(() => {
-        dispatch(pokemonsPresentation())
-        action()
-    }, [])
+    // useEffect(() => {
+    //     dispatch(pokemonsPresentation())
+    //     action()
+    // }, [])
    
 const handleChange = (e) => {
     setToggle({...toggle, [e.target.id]: e.target.checked})
@@ -78,23 +82,36 @@ console.log(state)
                         </div>
                     )}
                 )}
+                {/* {!loading && state.length === 0 && <img src={pokebola} alt="nocarga" height="60px" width="60px"/> } */}
                     {/* <div className={style.score}>
                       <div>Capturados:</div>
                       <div >{arrayPokemons.length}</div>
                     </div> */}
                 </div>
-                <div className={style.informacionPage}>
+                <div className={style.containerInfo}>
+                    <div style={{background: "linear-gradient(rgb(14 14 14 / 31%), rgb(49 49 49 / 15%))"}}>
+                        <img src={columnaPokemon} alt="" height="700px" width="400px" />
+                    </div>
+                    <div className={style.informacionPage}>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam ex laborum, dolorum nisi earum aliquam quam. Dolorem commodi beatae quibusdam perferendis soluta harum dolorum rem. Corporis perspiciatis velit ipsa porro!
+                    <div>
+                    <Link to={"/home"}> 
+                        <button className={style.btn} onClick={()=> dispatch(getInitialPokemons())}>Start</button>
+                    </Link>
+                    </div>
+                    </div>
+                    
                 </div>
-              <div>  
-                <Link to={"/home"}> 
-                <button className={style.btn} onClick={()=> dispatch(getInitialPokemons())}>Start</button>
-                </Link>
-                <label htmlFor="xD"></label>
-            </div>
             
 
-            
+            <div className={style.footer}> 
+                <div className={style.logos}>
+
+                <img src={linkedin} alt="" height="30px" width="30px"/>
+                <img src={github} alt="" height="30px" width="30px"/>
+                <img src={gmail} alt="" height="30px" width="30px" />
+                </div>
+            </div>
          
         </div>
     )

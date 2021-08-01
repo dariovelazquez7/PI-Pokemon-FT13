@@ -9,7 +9,7 @@
 .container{
     display: flex;
     justify-content: space-around;
-    height: 160px;
+    height: 115px;
     background: linear-gradient(
   rgb(43 42 42 / 30%),
   rgb(0 0 0 / 30%)
@@ -27,12 +27,18 @@
 margin-top: 40px;
 }
 
+.containerInfo{
+display: flex;
+background: linear-gradient( rgb(125 122 122 / 30%), rgb(95 92 92 / 15%) );
+align-items: center;
+}
+
 .informacionPage{
-    height: 200px;
-    background: linear-gradient( rgb(125 122 122 / 30%), rgb(95 92 92 / 15%) );
+  
+    margin-top: -305px;
     color: white;
     font-size: 20px;
-    
+    line-height : 45px;
     text-align: initial
 }
 
@@ -47,22 +53,29 @@ transition: 0.4s ease;
     color: white;
     transition: 0.4s ease;
     border: none;
-    border-radius: 5px;
-    font-size: 20px;
+    border-radius: 12px;
+    font-size: 24px;
     padding: 10px;
     font-weight: bold;
-    box-shadow: 0 0 10px black;
+    box-shadow: 0 2px 10px var(--bug);
     text-shadow: 0 0 3px black;
-    background: var(--bug)
+    background: var(--bug);
+    margin-left: 300px;
 
 }
 .btn:hover{
     transition: 0.4s ease;
     transform: scale(1.05);
     cursor: pointer;
+    box-shadow: 0 2px 10px var(--bug);
    
 } 
-
+.footer{
+    background-color: white;
+    height: 75px;
+  
+  
+}
 
 /* types */
 
