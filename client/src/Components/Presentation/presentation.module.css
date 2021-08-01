@@ -8,10 +8,21 @@
     color: white;
     align-items: center;
     justify-content:  center;
-    min-width: 450px;
+    min-width: 45%;
     
     text-shadow: 0 0 4px rgb(255, 255, 255);
    
+}
+.containMap{
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 55%;
+    align-items: center;
+    color: white
+}
+.errorNavbar{
+    display: flex;
+    align-items: center;
 }
 .container{
     display: flex;
@@ -24,13 +35,14 @@
 .divContain{
     display: flex;
     align-items: center;
-   
+    justify-content: center;
+    
 
 }
 
-.loading{
+/* .loading{
 margin-top: 40px;
-}
+} */
 
 .containerInfo{
 display: flex;

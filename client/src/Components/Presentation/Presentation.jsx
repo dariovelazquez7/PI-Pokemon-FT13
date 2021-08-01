@@ -51,12 +51,13 @@ console.log(state)
             <div className={style.container}>
                 <div className={style.title}>PokeApp</div>
                 
-                {loading? <img className={style.loading}  src={imgLoading} alt="" height="60px" width="60px"/>:
-                state?.map(pokemon => {
+                {loading? <div className={style.containMap}> <img className={style.loading}  src={imgLoading} alt="" height="60px" width="60px"/> </div>:
+                <div className={style.containMap}>
+                {state?.map(pokemon => {
                      return(
                         
                         <div className={style.divContain}>
-
+                                
                         <label htmlFor={pokemon.nombre}>
                         <input  id={pokemon.nombre} type="checkbox" style={{display: "none"}} onChange={handleChange}/>
                         <span >
@@ -73,15 +74,18 @@ console.log(state)
                         pokemon.imagen:pokebola } alt={pokemon.nombre}/>
                         </span>
                         </label>
-                       
+                             
                         </div>
                     )}
                     )}
                     {!loading && state?.length === 0 && 
-                    <div style={{color: "white"}}>
-                        <img className={style.loading} src={wobbu} alt="nocarga" height="60px" width="60px"/> ups!
-                    </div>
+                    <div className={style.errorNavbar}>
+                        <img src={wobbu} alt="nocarga" height="60px" width="60px"/> ups! Algo salió mal...
+                     </div>
                      }
+                     </div>
+
+                    }
                     </div>
                     <div className={style.containerInfo}>
                     <div style={{ marginLeft: "0px"}}>
