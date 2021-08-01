@@ -51,7 +51,7 @@ console.log(state)
             <div className={style.container}>
                 <div className={style.title}>PokeApp</div>
                 
-                {loading? <div className={style.containMap}> <img className={style.loading}  src={imgLoading} alt="" height="60px" width="60px"/> </div>:
+                {loading? <div className={style.containMap}> <img  src={imgLoading} alt="" height="60px" width="60px"/> </div>:
                 <div className={style.containMap}>
                 {state?.map(pokemon => {
                      return(
@@ -79,7 +79,7 @@ console.log(state)
                     )}
                     )}
                     {!loading && state?.length === 0 && 
-                    <div className={style.errorNavbar}>
+                    <div className={style.loading}>
                         <img src={wobbu} alt="nocarga" height="60px" width="60px"/> ups! Algo salió mal...
                      </div>
                      }

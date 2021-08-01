@@ -15,14 +15,16 @@
 }
 .containMap{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     min-width: 55%;
     align-items: center;
     color: white
 }
-.errorNavbar{
+.loading{
     display: flex;
     align-items: center;
+    min-width: 55%;
+    
 }
 .container{
     display: flex;
@@ -59,7 +61,7 @@ margin-left: 80px;
     font-size: 17px;
     line-height : 45px;
     text-align: initial;
-    margin-left: 121px;
+    margin-left: 155px;
     
 }
 
