@@ -5,7 +5,7 @@
     /* border-bottom: 1px solid rgba(192, 189, 189, 0.802) ;
     border-top: 1px solid rgba(192, 189, 189, 0.802) ; */
     padding: 15px;
-    background-color: #00000082;
+    background: linear-gradient( rgb(0 0 0 / 30%), rgb(0 0 0 / 30%));
     height: 88px;
     color: white;
     margin-bottom: -5px;
@@ -32,6 +32,7 @@
     justify-content: space-between;
     align-items: center;
     margin-left: 15px;
+    list-style: none;
    
 }
 .btn_search{
@@ -57,12 +58,6 @@
     outline: none;
     font-size: 18px;
     cursor:pointer;
-}
-
-
-li{
-    list-style: none;
-
 }
 
 .home{

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {Link} from "react-router-dom"
-// import style from "./presentation.module.css"
 import style from "./presentation.module.css"
 import { useDispatch} from "react-redux";
 import {getInitialPokemons, pokemonsPresentation} from "../../Actions/actions"
-
+import wobbu from "../../Img/wobbu.png";
 import pokebola from "../../Img/pokebola.png"
 import { useSelector } from "react-redux";
 import imgLoading from "../../Img/loading.gif";
@@ -35,29 +34,25 @@ function Presentation() {
           
     }
 
-    // useEffect(() => {
-    //     dispatch(pokemonsPresentation())
-    //     action()
-    // }, [])
+    useEffect(() => {
+        dispatch(pokemonsPresentation())
+        action()
+    }, [])
    
 const handleChange = (e) => {
     setToggle({...toggle, [e.target.id]: e.target.checked})
     
 }
-// let arrayPokemons = []
+
 console.log(state)
     return (
         <div className={style.bodyPage}>
             
             <div className={style.container}>
-                <div className={style.title}>Bienvenidos a pokeApp!</div>
+                <div className={style.title}>PokeApp</div>
                 
                 {loading? <img className={style.loading}  src={imgLoading} alt="" height="60px" width="60px"/>:
                 state?.map(pokemon => {
-                    
-                    // if(toggle[pokemon.nombre] === true){
-                    //     arrayPokemons.push(pokemon)
-                    // }
                      return(
                         
                         <div className={style.divContain}>
@@ -81,48 +76,52 @@ console.log(state)
                        
                         </div>
                     )}
-                )}
-                {/* {!loading && state.length === 0 && <img src={pokebola} alt="nocarga" height="60px" width="60px"/> } */}
-                    {/* <div className={style.score}>
-                      <div>Capturados:</div>
-                      <div >{arrayPokemons.length}</div>
-                    </div> */}
-                </div>
-                <div className={style.containerInfo}>
-                    <div>
+                    )}
+                    {!loading && state?.length === 0 && 
+                    <div style={{color: "white"}}>
+                        <img className={style.loading} src={wobbu} alt="nocarga" height="60px" width="60px"/> ups!
+                    </div>
+                     }
+                    </div>
+                    <div className={style.containerInfo}>
+                    <div style={{ marginLeft: "0px"}}>
                         <img src={columnaPokemon} alt="" height="700px" width="400px" />
                     </div>
                     <div className={style.informacionPage}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam ex laborum, dolorum nisi earum aliquam quam. Dolorem commodi beatae quibusdam perferendis soluta harum dolorum rem. Corporis perspiciatis velit ipsa porro!
+                        <h2>Bienvenidos a PokeApp!</h2>
+                        <ul>
+                            <li>Busca y obtén información acerca de los 898 pokemones oficiales.</li>
+                            <li>Utiliza los distintos filtrados de la página.</li>
+                            <li>Crea tus propios pokemones.</li>
+                        </ul>    
                     <div>
+                        <hr className={style.hr}/>
                     <Link to={"/home"}> 
                         <button className={style.btn} onClick={()=> dispatch(getInitialPokemons())}>Start</button>
                     </Link>
                     </div>
-                    </div>
-                    
+                    </div>   
                 </div>
-            
-
-            <div className={style.footer}> 
+                <div className={style.footer}> 
                 <div className={style.personalInfo}>
                     <div style={{color: "white"}}>Darío Velázquez</div>
-                    <div style={{color: "gray", fontSize: "13px"}}>Full Stack Developer - 2021</div>                
+                    <div style={{color: "gray", fontSize: "13px"}}>Full Stack Developer</div>                
                 </div>
                 <div className={style.logos}>
                     <a href="https://github.com/dariovelazquez7" rel="noreferrer" target="_blank">
-                    <img src={github} alt="" height="40px" width="40px"/>
+                    <img src={github} alt="github/dariovelazquez7" height="40px" width="40px"/>
                     </a>
-                    <a href="https://www.linkedin.com/in/dariio-velazquez/" rel="noreferrer" target="_blank"> 
-                    <img src={linkedin} alt="" height="40px" width="40px"/>
+                    <a href="https://www.linkedin.com/in/dariio-velazquez" rel="noreferrer" target="_blank"> 
+                    <img src={linkedin} alt="linkedin/dariio-velazquez" height="40px" width="40px"/>
                     </a>
                     <a href="mailto:dario.velazquez10@gmail.com" rel="noreferrer" target="_blank">
-                    <img src={gmail} alt="" height="40px" width="40px" />
+                    <img src={gmail} alt="dario.velazquez10@gmail.com" height="40px" width="40px" />
                          </a>
                     
                 </div>
-            </div>
+            
          
+            </div>
         </div>
     )
 }
