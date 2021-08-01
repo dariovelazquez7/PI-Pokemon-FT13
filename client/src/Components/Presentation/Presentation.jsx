@@ -89,7 +89,7 @@ console.log(state)
                     </div> */}
                 </div>
                 <div className={style.containerInfo}>
-                    <div style={{background: "linear-gradient(rgb(14 14 14 / 31%), rgb(49 49 49 / 15%))"}}>
+                    <div>
                         <img src={columnaPokemon} alt="" height="700px" width="400px" />
                     </div>
                     <div className={style.informacionPage}>
@@ -105,11 +105,21 @@ console.log(state)
             
 
             <div className={style.footer}> 
+                <div className={style.personalInfo}>
+                    <div style={{color: "white"}}>Darío Velázquez</div>
+                    <div style={{color: "gray", fontSize: "13px"}}>Full Stack Developer - 2021</div>                
+                </div>
                 <div className={style.logos}>
-
-                <img src={linkedin} alt="" height="30px" width="30px"/>
-                <img src={github} alt="" height="30px" width="30px"/>
-                <img src={gmail} alt="" height="30px" width="30px" />
+                    <a href="https://github.com/dariovelazquez7" rel="noreferrer" target="_blank">
+                    <img src={github} alt="" height="40px" width="40px"/>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dariio-velazquez/" rel="noreferrer" target="_blank"> 
+                    <img src={linkedin} alt="" height="40px" width="40px"/>
+                    </a>
+                    <a href="mailto:dario.velazquez10@gmail.com" rel="noreferrer" target="_blank">
+                    <img src={gmail} alt="" height="40px" width="40px" />
+                         </a>
+                    
                 </div>
             </div>
          
