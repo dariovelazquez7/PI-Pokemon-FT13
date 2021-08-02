@@ -56,7 +56,7 @@ console.log(state)
                 {state?.map(pokemon => {
                      return(
                         
-                        <div className={style.divContain}>
+                        <div className={style.divContain} key={pokemon.id}>
                                 
                         <label htmlFor={pokemon.nombre}>
                         <input  id={pokemon.nombre} type="checkbox" style={{display: "none"}} onChange={handleChange}/>

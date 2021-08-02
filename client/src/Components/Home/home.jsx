@@ -368,7 +368,7 @@ if(!loading && !allPokemons){
             </div>
             <div className={style.refresh}>
               <span>  
-                <button onClick={()=> dispatch(getInitialPokemons())}>Obtén otros pokemons<BiRefresh fontSize="30px"/>
+                <button onClick={()=> dispatch(getInitialPokemons())}>Obtén otros pokemones<BiRefresh fontSize="30px"/>
                 </button> 
               
               </span>
@@ -377,8 +377,8 @@ if(!loading && !allPokemons){
            
             <div className={style.checkFiltro}>
               
-              <button onClick={filtradoBaseDatos}>Solo pokemons creados</button>
-              <button onClick={filtradoOriginales}>Solo pokemons originales</button>
+              <button onClick={filtradoBaseDatos}>Solo pokemones creados</button>
+              <button onClick={filtradoOriginales}>Solo pokemones originales</button>
               <button onClick={allpokemons}>Todos</button>
             </div>
 
@@ -387,7 +387,7 @@ if(!loading && !allPokemons){
             <div className={style.container}>
 
                 { !loading && !existe && <div className={style.notFound}> 
-                  <h1>No se encontraron pokemons con ese tipo</h1>
+                  <h1>No se encontraron pokemones con ese tipo</h1>
                   <img src={wobbu}  height="200px" width="150px" alt="" /> 
                   <h2>Intenta con otros</h2>
                   </div>}

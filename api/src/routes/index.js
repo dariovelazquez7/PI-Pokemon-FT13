@@ -29,7 +29,7 @@ router.get("/pokemons/", async (req,res,next)=>{
          }
       })
 
-      let offset= Math.floor(Math.random() * 858)
+      let offset= Math.floor(Math.random() * 210)
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=40`) 
       const pokemonUrl = response.data.results.map(e => e.url)
       const PromiseUrl = await Promise.all(pokemonUrl.map(e => axios.get(e)))
@@ -205,7 +205,7 @@ router.get("/types/:type", async (req, res)=> {
    })
 
    router.get("/presentation", async(req, res)=>{
-      let offset= Math.floor(Math.random() * 868)
+      let offset= Math.floor(Math.random() * 220)
       try{const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=30`) 
       const pokemonUrl = response.data.results.map(e => e.url)
       const PromiseUrl = await Promise.all(pokemonUrl.map(e => axios.get(e)))
